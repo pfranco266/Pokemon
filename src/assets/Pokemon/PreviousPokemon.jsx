@@ -1,19 +1,38 @@
 import React, {useState, useEffect} from "react";
 import { PreviousEvoSprite, PreviousEvolutionContainer } from "./Pokemon.styled";
 
-function PreviousPokemon({prev}) {
-        console.log('prev', prev)
+function PreviousPokemon({cardPokemon, index}) {
     
-        const [species, setSpecies] = useState({});
+        const [species, setSpecies] = useState({
+            id: null,
+            name: null, 
+            sprites: {
+
+            }, 
+            evolutionTreeId: null
+        });
 
 
     async function fetchPreviousPoke(url) {
 
         try {
-            const response = await fetch(url); //    https://pokeapi.co/api/v2/pokemon-species/16/
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${cardPokemon.evolutionTree.evolvesFrom.id}/`); //    https://pokeapi.co/api/v2/pokemon-species/16/
             const data = await response.json();
-            console.log('dadata', data);
-            setSpecies({...data})
+            setSpecies(prev => {
+                return {
+                    ...prev, 
+                    id: data.id,
+                    name: data.name,
+                    evolutionTreeId: cardPokemon.evolutionTree.id,
+                    sprites: {
+                        default: data.sprites.front_default, 
+                        backShiny: data.sprites.back_shiny, 
+                        frontShiny: data.sprites.front_shiny, 
+                        backDeault: data.sprites.front_default, 
+
+                    }
+                }
+            })
         } catch (error) {
             console.log('the error: ', error.message)
         }
@@ -21,45 +40,15 @@ function PreviousPokemon({prev}) {
     }
 
     useEffect(()=> {
-        fetchPreviousPoke(prev.url);
+        fetchPreviousPoke();
     }, [])
 
     return (
         <PreviousEvolutionContainer>
-            {/* <PreviousEvoSprite /> */}
+            <PreviousEvoSprite src={species.sprites.default}/>
         </PreviousEvolutionContainer>
     )
 }
 
 export default PreviousPokemon
 
-// initial: 
-//     https://pokeapi.co/api/v2/pokemon/  which leads to: 
-
-// species
-// : 
-// name
-// : 
-// "raticate"
-// url
-// : 
-// "https://pokeapi.co/api/v2/pokemon-species/20/
-
-//  species    https://pokeapi.co/api/v2/pokemon-species/6/ 
-
-    // which leads to: 
-
-    //
-// evolves_from_species
-// : 
-// name
-// : 
-// "kakuna"
-// url
-// : 
-// "https://pokeapi.co/api/v2/pokemon-species/14/"
-    //
-    //
-    //
-    //
-    //

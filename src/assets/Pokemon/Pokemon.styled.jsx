@@ -110,7 +110,7 @@ export const PreviousEvolutionContainer = styled.div`
   left: 1%;
   position: absolute;
   border: 2px solid gold;
-  background-color: ${({ backgroundType }) => colorMap[backgroundType]};
+  background-color: silver;
 
 `
 
