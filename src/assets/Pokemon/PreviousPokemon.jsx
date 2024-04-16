@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { PreviousEvoSprite, PreviousEvolutionContainer } from "./Pokemon.styled";
+import { PreviousEvoSprite, PreviousEvolutionContainer, PreviousEvolutionName, PreviousEvolutionEvolve } from "./Pokemon.styled";
 
 function PreviousPokemon({cardPokemon, index}) {
     
@@ -45,7 +45,13 @@ function PreviousPokemon({cardPokemon, index}) {
 
     return (
         <PreviousEvolutionContainer>
+            <PreviousEvolutionEvolve>
+                evolves from: 
+            </PreviousEvolutionEvolve>
             <PreviousEvoSprite src={species.sprites.default}/>
+            <PreviousEvolutionName>
+                {species.name}
+            </PreviousEvolutionName>
         </PreviousEvolutionContainer>
     )
 }

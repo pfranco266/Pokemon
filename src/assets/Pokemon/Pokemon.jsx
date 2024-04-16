@@ -10,7 +10,10 @@ function Pokemon() {
         initialUrl: `https://pokeapi.co/api/v2/pokemon/`,
         nextUrl: null,
     });
+
     
+
+
     async function fetchPokeList(url) {
         try {
             const response = await fetch(url);  ///      https://pokeapi.co/api/v2/pokemon/
@@ -30,10 +33,13 @@ function Pokemon() {
             }));
         }
     }
+
+  
     
     useEffect(() => {
         // Use the initialUrl for the first fetch
         fetchPokeList(pokeList.initialUrl);
+
     }, []); // Dependency on initialUrl, if it changes, re-fetch
     
     // Handler for loading more items
@@ -50,7 +56,7 @@ function Pokemon() {
         <PokemonGridContainer>
             {pokeList.list && pokeList.list.length > 0 && (
                 pokeList.list.map((poke, index) => (
-                    <PokemonGridItem key={index}>
+                    <PokemonGridItem  key={index}>
                         <PokemonCard  PokemonDetailUrl={poke.url} index={index + 1}/>
                     </PokemonGridItem>
                 ))
