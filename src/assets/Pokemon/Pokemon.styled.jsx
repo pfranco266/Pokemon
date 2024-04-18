@@ -9,10 +9,9 @@ import colorMap from './colorMap';
 export const PokemonGridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 300px); /* Creates 3 columns */
-  grid-auto-rows: 400px;
+  grid-auto-rows: 500px auto; 
   gap: 30px;
   justify-content: center; /* Center the grid horizontally */
-  padding: 20px; /* Add some padding around the grid */
   @media(max-width: 1350px) {
     grid-template-columns: repeat(3, 300px);
   }
@@ -38,13 +37,17 @@ export const PokeContainer = styled.div`
 export const PokemonGridItem = styled.h4`
 
     border: 1px solid #ccc;
+    height: 375px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: top;
     color: #333;
     border-radius: 8px;
     border: 10px solid gold;
     background-color: white;
+
+
 
   
 `
@@ -227,4 +230,26 @@ export const WeaknessIcon =  styled(colorMap.electric.icon)`
 export const GenerationDescription = styled.p`
 height: auto;
 font-size: 6px;
+`
+
+
+export const AddToCart = styled.button`
+padding: 8px 16px;
+margin-top: 10px;  // Ensures it is visually separated from the card
+background-color: blue;
+color: white;
+border: none;
+cursor: pointer;
+`
+
+
+export const GridItems = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+
+export const Price = styled.div`
+  font-size: 1rem;
+  text-align: center;
 `
