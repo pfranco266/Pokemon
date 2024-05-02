@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { PreviousEvoSprite, PreviousEvolutionContainer, PreviousEvolutionName, PreviousEvolutionEvolve } from "./Pokemon.styled";
 
-function PreviousPokemon({cardPokemon, index}) {
+function PreviousPokemon({cardPokemon, index, backgroundType}) {
     
         const [species, setSpecies] = useState({
             id: null,
@@ -44,7 +44,7 @@ function PreviousPokemon({cardPokemon, index}) {
     }, [])
 
     return (
-        <PreviousEvolutionContainer>
+        <PreviousEvolutionContainer backgroundType={backgroundType}>
             <PreviousEvolutionEvolve>
                 evolves from: 
             </PreviousEvolutionEvolve>

@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { PokemonGridContainer, PokemonGridItem, LoadMore, PokeContainer, AddToCart, GridItems, Price } from "./Pokemon.styled";
 import PokemonCard from "./PokemonCard"
+import CartContext from "../../CartContext";
+
+
 function Pokemon() {
+
+    const { cart, setCart } = useContext(CartContext);
+
 
     const [pokeList, setPokeList] = useState({
         loading: true,
@@ -11,30 +17,24 @@ function Pokemon() {
         nextUrl: null,
     });
 
-    const [cart, setCart] = useState([
 
-    ]);
 
-    function handleClick(index) {
-        setCart(prev => {
-            if (prev.indexOf(index) === -1) {  
-                return [...prev, index];
-            } else {
-                return prev; 
-            }
-        });
-    }
+    const handleClick = (index) => {
+        console.log(cart)
+           return setCart((prev) => {
+                return [...prev, index]
+            });
+    };
 
-    console.log('mycart', cart);
     async function fetchPokeList(url) {
         try {
             const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/
             const data = await response.json();
-            console.log('Pokemon.jsx', data)
+            // console.log('Pokemon.jsx', data)
             setPokeList(prev => ({
                 ...prev,
                 loading: false,
-                list: [...prev.list, ...data.results], // Append new results
+                list: [...prev.list, ...data.results], 
                 nextUrl: data.next // Update the next URL
             }));
         } catch (error) {
@@ -45,7 +45,6 @@ function Pokemon() {
             }));
         }
     }
-
 
 
     useEffect(() => {
@@ -72,12 +71,11 @@ function Pokemon() {
 
                             <PokemonGridItem >
                                 <PokemonCard PokemonDetailUrl={poke.url} index={index + 1} />
-                                
                             </PokemonGridItem>
                             <Price>$5.99</Price>
-                            <AddToCart onClick={() => handleClick(index)}>
-                                    Buy Card
-                                </AddToCart>
+                            <AddToCart aria-label="Add to cart" onClick={() => handleClick(index + 1)}>
+                                Buy Card
+                            </AddToCart>
                         </GridItems>
                     ))
                 )}
@@ -93,3 +91,4 @@ function Pokemon() {
 }
 
 export default Pokemon;
+

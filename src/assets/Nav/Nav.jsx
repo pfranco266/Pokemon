@@ -11,8 +11,8 @@ function Nav () {
 
     return (
         <NavContainer>
-            <Link to='/'>Home </Link>
-            <Link to="/cart">
+            <Link aria-label="Home" to='/'>Home </Link>
+            <Link aria-label="Cart" to="/cart">
             <MdOutlineShoppingCart />
                 
             </Link>

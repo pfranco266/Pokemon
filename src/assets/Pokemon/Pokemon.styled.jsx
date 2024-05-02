@@ -3,15 +3,12 @@ import colorMap from './colorMap';
 
 
 
-
-
-
 export const PokemonGridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 300px); /* Creates 3 columns */
+  grid-template-columns: repeat(4, 300px); 
   grid-auto-rows: 500px auto; 
   gap: 30px;
-  justify-content: center; /* Center the grid horizontally */
+  justify-content: center; 
   @media(max-width: 1350px) {
     grid-template-columns: repeat(3, 300px);
   }
@@ -25,7 +22,6 @@ export const PokemonGridContainer = styled.div`
 
 export const PokeContainer = styled.div`
   display: flex;
-
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -34,7 +30,7 @@ export const PokeContainer = styled.div`
   
 `
 
-export const PokemonGridItem = styled.h4`
+export const PokemonGridItem = styled.div`
 
     border: 1px solid #ccc;
     height: 375px;
@@ -46,8 +42,6 @@ export const PokemonGridItem = styled.h4`
     border-radius: 8px;
     border: 10px solid gold;
     background-color: white;
-
-
 
   
 `
@@ -81,6 +75,7 @@ export const SpriteContainer = styled.div`
   height: 45%;
   border: 5px solid gold;
   background-color: ${({ backgroundType }) => colorMap[backgroundType]?.color};
+  box-shadow: 2px 2px 4px black;
 
 
 `
@@ -124,8 +119,8 @@ export const PreviousEvolutionContainer = styled.div`
   left: 1%;
   position: absolute;
   border: 2px solid gold;
-  background-color: silver;
-
+  background-color: ${({ backgroundType }) =>
+  colorMap[backgroundType?.[1]?.type?.name] ? colorMap[backgroundType?.[1]?.type?.name].color : colorMap[backgroundType?.[0]?.type?.name].color};
 `
 export const PreviousEvolutionEvolve = styled.span`
   font-size: 8px;
@@ -253,3 +248,5 @@ export const Price = styled.div`
   font-size: 1rem;
   text-align: center;
 `
+
+

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ResistanceDescription, ResistanceIcon, WeaknessDescription, WeaknessIcon, GenerationDescription, PokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
 
-function PokemonCard({ index  }) {
+function PokemonCard({ index }) {
 
     const [pokemonDetails, setPokemonDetails] = useState({
         id: null,
@@ -22,6 +22,8 @@ function PokemonCard({ index  }) {
     const [randomDescription, setRandomDescription] = useState(Math.floor(Math.random() * (pokemonDetails.description.length || 1)));
 
 
+    
+
     async function fetchSinglePokemon() {
         try {
             const pokemonDetailUrl = `https://pokeapi.co/api/v2/pokemon/${index}/`;
@@ -37,12 +39,14 @@ function PokemonCard({ index  }) {
 
                 const evolvesFromUrl = pokemonSpeciesData.evolves_from_species?.url || '';
                 const evolutionData = await fetchEvolutionData(pokemonSpeciesData.evolution_chain.url, evolvesFromUrl);
-                console.log('evo', evolutionData, 'deailtData', pokemonDetailData, '  species', pokemonSpeciesData)
+                // console.log('evo', evolutionData, 'deailtData', pokemonDetailData, '  species', pokemonSpeciesData)
 
                 setPokemonDetails(prev => {
                     return {
                         ...prev,
                         id: pokemonDetailData.id,
+                        legendary: pokemonSpeciesData.is_legendary,
+                        mythical: pokemonSpeciesData.is_mythical,
                         name: pokemonDetailData.name,
                         height: (pokemonDetailData.height / 10),
                         weight: pokemonDetailData.weight,
@@ -75,7 +79,6 @@ function PokemonCard({ index  }) {
 
                     }
                 })
-
            
 
             } else {
@@ -83,7 +86,6 @@ function PokemonCard({ index  }) {
                     ...prev,
                     id: pokemonDetailData.id,
                     name: pokemonDetailData.name,
-                    // other properties...
                     evolutionDetails: null
                 }));
             }
@@ -105,9 +107,9 @@ function PokemonCard({ index  }) {
 
             return { ...evolutionChain, evolvesFrom };
         } catch (error) {
-            console.error("Error fetching evolution data:", error.message);
+            // console.error("Error fetching evolution data:", error.message);
             return {};
-        }
+        } 
     }
     useEffect(() => {
         // Recalculate `rand` only when the list of moves changes
@@ -124,10 +126,12 @@ function PokemonCard({ index  }) {
 
 
 
+
+
     return (
         <PokeContainer>
-
-            {pokemonDetails?.evolutionTree?.evolvesFrom?.name && <PreviousPokemon index={index} cardPokemon={pokemonDetails} />}
+                {/* instead of passing through type to be used again, i'll send through the secondary type for the backround color */}
+            {pokemonDetails?.evolutionTree?.evolvesFrom?.name && <PreviousPokemon backgroundType={pokemonDetails.types} index={index} cardPokemon={pokemonDetails} />}
 
             <Name>{pokemonDetails.name}</Name>
             <HitPoints>HP: {pokemonDetails.stats.hp}</HitPoints>
@@ -173,7 +177,9 @@ function PokemonCard({ index  }) {
                         Generation
                     </ResistanceDescription>
                     <GenerationDescription>
-                        1
+                        {pokemonDetails?.mythical ? 'MYTHICAL': null}
+                        {pokemonDetails?.legendary ? 'LEGENDARY': null}
+
                     </GenerationDescription>
                 </GenerationContainer>
             </ElementContainer>
@@ -182,5 +188,4 @@ function PokemonCard({ index  }) {
 }
 
 export default PokemonCard
-
 
