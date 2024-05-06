@@ -8,7 +8,6 @@ function Pokemon() {
 
     const { cart, setCart } = useContext(CartContext);
 
-
     const [pokeList, setPokeList] = useState({
         loading: true,
         error: '',
@@ -30,12 +29,14 @@ function Pokemon() {
         try {
             const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/
             const data = await response.json();
+            
+
             // console.log('Pokemon.jsx', data)
             setPokeList(prev => ({
                 ...prev,
                 loading: false,
                 list: [...prev.list, ...data.results], 
-                nextUrl: data.next // Update the next URL
+                nextUrl: data.next, // Update the next URL
             }));
         } catch (error) {
             setPokeList(prev => ({
@@ -45,6 +46,7 @@ function Pokemon() {
             }));
         }
     }
+
 
 
     useEffect(() => {
@@ -72,9 +74,8 @@ function Pokemon() {
                             <PokemonGridItem >
                                 <PokemonCard PokemonDetailUrl={poke.url} index={index + 1} />
                             </PokemonGridItem>
-                            <Price>$5.99</Price>
                             <AddToCart aria-label="Add to cart" onClick={() => handleClick(index + 1)}>
-                                Buy Card
+                                Learn More
                             </AddToCart>
                         </GridItems>
                     ))

@@ -1,14 +1,27 @@
 import React, { useContext } from "react";
-import { Title, Container } from "./Cart.styled";
+import { Title, Total } from "./Cart.styled";
 import CartContext from "../../CartContext";
 import PokemonCard from "../Pokemon/PokemonCard";
 
-import { GridItems, PokemonGridItem, Price, PokemonGridContainer } from "../Pokemon/Pokemon.styled";
+import { GridItems, PokemonGridItem, Price, PokemonGridContainer, AddToCart } from "../Pokemon/Pokemon.styled";
 
 function Cart() {
 
 
-    const { cart } = useContext(CartContext);
+    const { cart, setCart } = useContext(CartContext);
+
+    // function removeFromCart(index) {
+    //     console.log(cart, index);
+    //     return setCart((prev) => {
+    //         return prev.filter(id => id !== index); // Change `===` to `!==` and add `return`
+    //     });
+    // }
+
+    function removeFromCart(index) {
+        return setCart(prev => {
+            
+        })
+    }
 
 
     return (
@@ -17,19 +30,25 @@ function Cart() {
                 your cart
             </Title>
             <PokemonGridContainer>
-            {cart && cart.length > 0 && (
-                cart.map((index) => (
-                    <GridItems key={index}>
+                {cart && cart.length > 0 && (
+                    cart.map((index) => (
+                        <GridItems key={index}>
 
-                        <PokemonGridItem >
-                            <PokemonCard  index={index} />
-                        </PokemonGridItem>
-                        <Price>$5.99</Price>
+                            <PokemonGridItem >
+                                <PokemonCard index={index} />
+                            </PokemonGridItem>
+                            <Price>$5.99</Price>
+                            <AddToCart aria-label="Remove from cart" onClick={() => removeFromCart( index)}>
+                                Remove from cart
+                            </AddToCart>
 
-                    </GridItems>
-                ))
-            )}
+                        </GridItems>
+                    ))
+                )}
             </PokemonGridContainer>
+            <Total>
+
+            </Total>
         </div>
     );
 };

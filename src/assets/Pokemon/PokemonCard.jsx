@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ResistanceDescription, ResistanceIcon, WeaknessDescription, WeaknessIcon, GenerationDescription, PokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
+import { ResistanceDescription, ResistanceIcon, WeaknessDescription, WeaknessIcon, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
 
 function PokemonCard({ index }) {
@@ -129,7 +129,7 @@ function PokemonCard({ index }) {
 
 
     return (
-        <PokeContainer>
+        <IndividualPokeContainer color1={pokemonDetails.types?.[0]?.type?.name || '#f1f1f1'} color2={pokemonDetails.types?.[1]?.type?.name}>
                 {/* instead of passing through type to be used again, i'll send through the secondary type for the backround color */}
             {pokemonDetails?.evolutionTree?.evolvesFrom?.name && <PreviousPokemon backgroundType={pokemonDetails.types} index={index} cardPokemon={pokemonDetails} />}
 
@@ -183,7 +183,7 @@ function PokemonCard({ index }) {
                     </GenerationDescription>
                 </GenerationContainer>
             </ElementContainer>
-        </PokeContainer>
+        </IndividualPokeContainer>
     );
 }
 

@@ -27,7 +27,23 @@ export const PokeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  
+`
+
+export const IndividualPokeContainer = styled.div`
+display: flex;
+width: 100%;
+height: 100%;
+flex-direction: column;
+align-items: center;
+position: relative;
+background: ${({ color1, color2 }) => {
+  console.log('color1:', color1, 'color2:', color2); // Add logging to see what values are being passed
+  const firstColor = colorMap[color1]?.color || '#f1f1f1';
+  const secondColor = color2 === 'undefined' ? '#f6f6f6' : colorMap[color2]?.color ; // Ensure '#f6f6f6' is used if second color is not valid
+  console.log('firstColor:', firstColor, 'secondColor:', secondColor); // Log calculated colors
+  return color2 && color2 !== '#f1f1f1' ? `linear-gradient(${secondColor}, ${firstColor})` : `${firstColor}`;
+}};
+
 `
 
 export const PokemonGridItem = styled.div`
@@ -74,9 +90,9 @@ export const SpriteContainer = styled.div`
   width: 65%;
   height: 45%;
   border: 5px solid gold;
-  background-color: ${({ backgroundType }) => colorMap[backgroundType]?.color};
+  background-color: #f6f6f6;
   box-shadow: 2px 2px 4px black;
-
+  background-color: black;
 
 `
 
@@ -120,7 +136,7 @@ export const PreviousEvolutionContainer = styled.div`
   position: absolute;
   border: 2px solid gold;
   background-color: ${({ backgroundType }) =>
-  colorMap[backgroundType?.[1]?.type?.name] ? colorMap[backgroundType?.[1]?.type?.name].color : colorMap[backgroundType?.[0]?.type?.name].color};
+  colorMap[backgroundType?.[1]?.type?.name] ? colorMap[backgroundType?.[0]?.type?.name].color : colorMap.normal.color};
 `
 export const PreviousEvolutionEvolve = styled.span`
   font-size: 8px;
