@@ -37,10 +37,8 @@ flex-direction: column;
 align-items: center;
 position: relative;
 background: ${({ color1, color2 }) => {
-  console.log('color1:', color1, 'color2:', color2); // Add logging to see what values are being passed
   const firstColor = colorMap[color1]?.color || '#f1f1f1';
   const secondColor = color2 === 'undefined' ? '#f6f6f6' : colorMap[color2]?.color ; // Ensure '#f6f6f6' is used if second color is not valid
-  console.log('firstColor:', firstColor, 'secondColor:', secondColor); // Log calculated colors
   return color2 && color2 !== '#f1f1f1' ? `linear-gradient(${secondColor}, ${firstColor})` : `${firstColor}`;
 }};
 
@@ -264,5 +262,7 @@ export const Price = styled.div`
   font-size: 1rem;
   text-align: center;
 `
+
+
 
 

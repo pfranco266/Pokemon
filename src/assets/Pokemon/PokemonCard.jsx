@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ResistanceDescription, ResistanceIcon, WeaknessDescription, WeaknessIcon, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
+import colorMap from "./colorMap";
+import PokemonWeak from "./PokemonWeak"
 
 function PokemonCard({ index }) {
 
@@ -78,9 +80,9 @@ function PokemonCard({ index }) {
                         ]
 
                     }
+                    
                 })
            
-
             } else {
                 setPokemonDetails(prev => ({
                     ...prev,
@@ -107,7 +109,7 @@ function PokemonCard({ index }) {
 
             return { ...evolutionChain, evolvesFrom };
         } catch (error) {
-            // console.error("Error fetching evolution data:", error.message);
+            console.error("Error fetching evolution data:", error.message);
             return {};
         } 
     }
@@ -122,7 +124,6 @@ function PokemonCard({ index }) {
         fetchSinglePokemon();
         
     }, [index])
-
 
 
 
@@ -162,24 +163,21 @@ function PokemonCard({ index }) {
             <ElementContainer>
                 <WeaknessContainer>
                     <WeaknessDescription>
-                        Weakness
+                        Weaknesses
                     </WeaknessDescription>
-                    <WeaknessIcon />
+                    <PokemonWeak type1={pokemonDetails?.types[0]?.type.name} type2={pokemonDetails?.types[0]?.type?.name} resist={false} weak={true} />
                 </WeaknessContainer>
                 <ResistanceContainer>
                     <ResistanceDescription>
                         Resistance
                     </ResistanceDescription>
-                    <ResistanceIcon />
+                    <PokemonWeak type1={pokemonDetails?.types[0]?.type?.name} type2={pokemonDetails?.types[1]?.type?.name} resist={true} weak={false} />
                 </ResistanceContainer>
                 <GenerationContainer>
                     <ResistanceDescription>
                         Generation
                     </ResistanceDescription>
                     <GenerationDescription>
-                        {pokemonDetails?.mythical ? 'MYTHICAL': null}
-                        {pokemonDetails?.legendary ? 'LEGENDARY': null}
-
                     </GenerationDescription>
                 </GenerationContainer>
             </ElementContainer>
