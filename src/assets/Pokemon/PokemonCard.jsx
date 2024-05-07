@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ResistanceDescription, ResistanceIcon, WeaknessDescription, WeaknessIcon, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
+import { ResistanceDescription, WeaknessDescription, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
 import colorMap from "./colorMap";
 import PokemonWeak from "./PokemonWeak"
@@ -23,7 +23,7 @@ function PokemonCard({ index }) {
     const [randomMove, setRandomMove] = useState(Math.floor(Math.random() * (pokemonDetails.moves.length || 1)));
     const [randomDescription, setRandomDescription] = useState(Math.floor(Math.random() * (pokemonDetails.description.length || 1)));
 
-
+    
     
 
     async function fetchSinglePokemon() {
@@ -178,6 +178,7 @@ function PokemonCard({ index }) {
                         Generation
                     </ResistanceDescription>
                     <GenerationDescription>
+                        {pokemonDetails.id <= 151 ? '1' : '2'}
                     </GenerationDescription>
                 </GenerationContainer>
             </ElementContainer>

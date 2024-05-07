@@ -13,11 +13,11 @@ function PokemonWeak ({type1=undefined, type2 = undefined,  resist, weak}) {
         };
       
         for (let val in selectedType1) {
-          if (selectedType1[val] === 0.5) {
+          if (selectedType1[val] === 0.5 && strengthWeakness.resistance.length <= 10) {
             strengthWeakness.resistance.push(val);
           }
       
-          if (selectedType1[val] === 2) {
+          if (selectedType1[val] === 2 && strengthWeakness.weakness.length <= 10) {
             strengthWeakness.weakness.push(val);
           }
         }
@@ -25,11 +25,11 @@ function PokemonWeak ({type1=undefined, type2 = undefined,  resist, weak}) {
         if (type2 !== null) {
           const selectedType2 = colorMap[type2].typeChart;
           for (let val in selectedType2) {
-            if (selectedType2[val] === 0.5) {
+            if (selectedType2[val] === 0.5 && strengthWeakness.resistance.length <= 10) {
               strengthWeakness.resistance.push(val);
             }
       
-            if (selectedType2[val] === 2) {
+            if (selectedType2[val] === 2 && strengthWeakness.weakness.length <= 10) {
               strengthWeakness.weakness.push(val);
             }
           }
@@ -40,7 +40,7 @@ function PokemonWeak ({type1=undefined, type2 = undefined,  resist, weak}) {
 
       const typeValues = typeMap(type1, type2);
       const typeResistSet = new Set(typeValues.resistance);
-      const typeWeaknessSet = new Set(typeValues.weakness)
+      const typeWeaknessSet = new Set(typeValues.weakness);
 
     //   console.log(type1, 'res', typeResistSet)
     //   console.log(type2, 'wea', typeWeaknessSet)

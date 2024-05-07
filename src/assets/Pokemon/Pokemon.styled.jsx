@@ -38,8 +38,8 @@ align-items: center;
 position: relative;
 background: ${({ color1, color2 }) => {
   const firstColor = colorMap[color1]?.color || '#f1f1f1';
-  const secondColor = color2 === 'undefined' ? '#f6f6f6' : colorMap[color2]?.color ; // Ensure '#f6f6f6' is used if second color is not valid
-  return color2 && color2 !== '#f1f1f1' ? `linear-gradient(${secondColor}, ${firstColor})` : `${firstColor}`;
+  const secondColor = color2 === undefined ? '#f6f6f6' : colorMap[color2]?.color ; // Ensure '#f6f6f6' is used if second color is not valid
+  return color2 !== '#f1f1f1' ? `linear-gradient(${secondColor}, ${firstColor})` : `linear-gradient(#e66465, ${firstColor})`;
 }};
 
 `
@@ -80,6 +80,8 @@ export const HitPoints = styled.div`
 export const Name = styled.div`
   display: flex;
   font-size: 14px;
+  font-weight: 700;
+  color: black;
 `
 
 export const SpriteContainer = styled.div`
@@ -198,18 +200,22 @@ export const WeaknessContainer = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
-  width: 33%;  // Give each container a third of the parent container's width
+  height: 70px;
+  width: 33%;  
+  border-right: 1px solid black;
 `;
 
 export const ResistanceContainer = styled.span`
   display: flex;
-  
+  height: 70px;
+
   flex-direction: column;
   align-items: center;
 
-  height: auto;
   width: 33%;
+  border-right: 1px solid black;
+
+
 `;
 
 export const GenerationContainer = styled.span`
@@ -226,16 +232,12 @@ export const ResistanceDescription = styled.p`
   height: auto;
   font-size: 6px;
 `
-export const ResistanceIcon = styled(colorMap.rock.icon)`
 
-`
 export const WeaknessDescription = styled.p`
 height: auto;
 font-size: 6px;
 `
-export const WeaknessIcon =  styled(colorMap.electric.icon)`
-  color: ${colorMap.electric.color};
-`
+
 export const GenerationDescription = styled.p`
 height: auto;
 font-size: 6px;
