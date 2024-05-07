@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Title, Total } from "./Cart.styled";
 import CartContext from "../../CartContext";
 import PokemonCard from "../Pokemon/PokemonCard";
-import colorMap from "../Pokemon/colorMap";
 
 import { GridItems, PokemonGridItem, Price, PokemonGridContainer, AddToCart } from "../Pokemon/Pokemon.styled";
 
@@ -12,15 +11,29 @@ function Cart() {
     const { cart, setCart } = useContext(CartContext);
 
 
-
-
-
-    function removeFromCart(index) {
-        console.log(cart, index);
-        return setCart((prev) => {
-            return prev.filter(id => id !== index); // Change `===` to `!==` and add `return`
+    const removeFromCart = (pokemon) => {
+        console.log('cart', cart)
+        console.log('poke', pokemon)
+        setCart((prev) => {
+            //find existing pokemon item, and see if it matches the cart index
+            const existingItemIndex = prev.findIndex(item => item.index === pokemon.index);
+            if (existingItemIndex !== -1) {
+                const newCart = [...prev];
+                const existingItem = newCart[existingItemIndex];
+    
+                if (existingItem.amount > 1) {
+                    // If more than one, decrement the amount
+                    newCart[existingItemIndex] = { ...existingItem, amount: existingItem.amount - 1 };
+                } else {
+                    // If it's the last one, remove it entirely from the cart
+                    newCart.splice(existingItemIndex, 1);
+                }
+                return newCart;
+            }
+            // If we can't match the pokemon.index to the cart item.index, return
+            return prev;
         });
-    }
+    };
 
 
 
@@ -31,15 +44,18 @@ function Cart() {
             </Title>
             <PokemonGridContainer>
                 {cart && cart.length > 0 && (
-                    cart.map((index) => (
-                        <GridItems key={index}>
+                    cart.map((item) => (
+                        <GridItems key={item.index}>
 
                             <PokemonGridItem >
-                                <PokemonCard index={index} />
+                                <PokemonCard index={item.index} />
                             </PokemonGridItem>
-                            <Price>$5.99</Price>
-                            <AddToCart aria-label="Remove from cart" onClick={() => removeFromCart( index)}>
+                            <Price>$5.99 x {item.amount}</Price>
+                            <AddToCart aria-label="Remove from cart" onClick={() => removeFromCart( item )}>
                                 Remove from cart
+                            </AddToCart>
+                            <AddToCart aria-label="Remove from cart" onClick={() => removeFromCart( item )}>
+                                Add More
                             </AddToCart>
 
                         </GridItems>
@@ -58,16 +74,3 @@ export default Cart;
 
 
 
-//this messes up the indexing of the pokemon catalogue 
-
-
-// function removeFromCart(index) {
-//     console.log(index, cart);
-//     return setCart((prev) => {
-//         const pos = prev.findIndex(id => id === index); // Find the position of the first item matching the index
-//         if (pos !== -1) {
-//             return [...prev.slice(0, pos), ...prev.slice(pos + 1)]; // Remove the item at position `pos`
-//         }
-//         return prev; // Return the original array if no item is found
-//     });
-// }

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { PokemonGridContainer, PokemonGridItem, LoadMore, PokeContainer, AddToCart, GridItems, Price } from "./Pokemon.styled";
 import PokemonCard from "./PokemonCard"
 import CartContext from "../../CartContext";
+// import { v4 as uuid } from 'uuid';
+
 
 
 function Pokemon() {
@@ -18,11 +20,26 @@ function Pokemon() {
 
 
 
-    const handleClick = (index) => {
-        console.log(cart)
-           return setCart((prev) => {
-                return [...prev, index]
-            });
+    const handleClick = (pokemonIndex) => {
+        console.log(cart);
+        setCart((prev) => {
+            // Find if an item with the same pokemonIndex is already in the cart
+            const existingItemIndex = prev.findIndex(item => item.index === pokemonIndex);
+            if (existingItemIndex !== -1) {
+                // If an item with the same index is found, increment its amount
+                const newCart = [...prev];
+                newCart[existingItemIndex].amount += 1;
+                return newCart;
+            } else {
+                // If no such item exists, add a new one with a unique UUID
+                return [...prev, {
+                    index: pokemonIndex, // This is the Pokémon's unique identifier, like "1" for Bulbasaur
+                    // id: uuid(), // Unique ID for each entry
+                    
+                    amount: 1, // Start with one item
+                }];
+            }
+        });
     };
 
     async function fetchPokeList(url) {
@@ -74,6 +91,9 @@ function Pokemon() {
                             <PokemonGridItem >
                                 <PokemonCard PokemonDetailUrl={poke.url} index={index + 1} />
                             </PokemonGridItem>
+                            <Price>
+                                $5.99
+                            </Price>
                             <AddToCart aria-label="Add to cart" onClick={() => handleClick(index + 1)}>
                                 Learn More
                             </AddToCart>
