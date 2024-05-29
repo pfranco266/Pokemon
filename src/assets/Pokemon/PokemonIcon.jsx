@@ -4,7 +4,6 @@ import colorMap from "./colorMap";
 
 
 function PokemonIcon ({type}) {
-    console.log('from way downtown', type)
     const IconComponent = colorMap[type]?.icon;
 
     return (

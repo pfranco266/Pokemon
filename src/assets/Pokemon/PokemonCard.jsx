@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { ResistanceDescription, WeaknessDescription, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
-import colorMap from "./colorMap";
 import PokemonWeak from "./PokemonWeak"
 
 function PokemonCard({ index }) {
@@ -114,13 +113,6 @@ function PokemonCard({ index }) {
             return {};
         } 
     }
-    useEffect(() => {
-        someRef.current += 1;
-        console.log(someRef)
-        // Recalculate `rand` only when the list of moves changes
-        setRandomMove(Math.floor(Math.random() * (pokemonDetails.moves.length || 1)));
-        setRandomDescription(Math.floor(Math.random() * (pokemonDetails.description.length || 1)))
-    }, [pokemonDetails.moves.length, pokemonDetails.description.length]);
 
 
     useEffect(() => {
@@ -129,40 +121,48 @@ function PokemonCard({ index }) {
         console.log(someRef)
     }, [index])
 
+    const memoizedPokemonDetails = useMemo(() => pokemonDetails, [pokemonDetails]);
+
+
+    useEffect(() => {
+        someRef.current += 1;
+        console.log(someRef);
+        setRandomMove(Math.floor(Math.random() * (memoizedPokemonDetails.moves.length || 1)));
+        setRandomDescription(Math.floor(Math.random() * (memoizedPokemonDetails.description.length || 1)));
+      }, [memoizedPokemonDetails.moves.length, memoizedPokemonDetails.description.length]);
+
 
 
 
 
     return (
-        <IndividualPokeContainer color1={pokemonDetails.types?.[0]?.type?.name || '#f1f1f1'} color2={pokemonDetails.types?.[1]?.type?.name}>
-                {/* instead of passing through type to be used again, i'll send through the secondary type for the backround color */}
-            {pokemonDetails?.evolutionTree?.evolvesFrom?.name && <PreviousPokemon backgroundType={pokemonDetails.types} index={index} cardPokemon={pokemonDetails} />}
-            <p>Render Count: {someRef.current}</p>
+        <IndividualPokeContainer color1={memoizedPokemonDetails.types?.[0]?.type?.name || '#f1f1f1'} color2={memoizedPokemonDetails.types?.[1]?.type?.name}>
+            {memoizedPokemonDetails?.evolutionTree?.evolvesFrom?.name && <PreviousPokemon backgroundType={memoizedPokemonDetails.types} index={index} cardPokemon={memoizedPokemonDetails} />}
 
-            <Name>{pokemonDetails.name}</Name>
-            <HitPoints>HP: {pokemonDetails.stats.hp}</HitPoints>
-            <SpriteContainer backgroundType={pokemonDetails.types?.[0]?.type?.name}>
-                <Sprite src={pokemonDetails.sprites.default}></Sprite>
+            <Name>{memoizedPokemonDetails.name}</Name>
+            <HitPoints>HP: {memoizedPokemonDetails.stats.hp}</HitPoints>
+            <SpriteContainer backgroundType={memoizedPokemonDetails.types?.[0]?.type?.name}>
+                <Sprite src={memoizedPokemonDetails.sprites.default}></Sprite>
             </SpriteContainer>
             <InfoContainer>
-                {pokemonDetails.types.map((type, index) => (
+                {memoizedPokemonDetails.types.map((type, index) => (
                     <PokeType key={index} type={type.type.name}>Type {index + 1}: {type.type.name}</PokeType>
                 ))}
-                <PokeHeightWeight>Height: {pokemonDetails.height}m, </PokeHeightWeight>
-                <PokeHeightWeight>Weight: {pokemonDetails.weight}lbs.</PokeHeightWeight>
+                <PokeHeightWeight>Height: {memoizedPokemonDetails.height}m, </PokeHeightWeight>
+                <PokeHeightWeight>Weight: {memoizedPokemonDetails.weight}lbs.</PokeHeightWeight>
 
             </InfoContainer>
             <PokemonDescriptionContainer>
                 <PokemonDescription>
-                    {pokemonDetails.description[randomDescription]}
+                    {memoizedPokemonDetails.description[randomDescription]}
                 </PokemonDescription>
             </PokemonDescriptionContainer>
             <PokemonMoveContainer>
                 <Name>
-                    Special Move: {pokemonDetails?.moves[randomMove]?.move?.name}
+                    Special Move: {memoizedPokemonDetails?.moves[randomMove]?.move?.name}
                 </Name>
                 <Name>
-                    {pokemonDetails?.stats.specialAttack}
+                    {memoizedPokemonDetails?.stats.specialAttack}
                 </Name>
             </PokemonMoveContainer>
             <ElementContainer>
@@ -170,20 +170,20 @@ function PokemonCard({ index }) {
                     <WeaknessDescription>
                         Weaknesses
                     </WeaknessDescription>
-                    <PokemonWeak type1={pokemonDetails?.types[0]?.type.name} type2={pokemonDetails?.types[0]?.type?.name} resist={false} weak={true} />
+                    <PokemonWeak type1={memoizedPokemonDetails?.types[0]?.type.name} type2={memoizedPokemonDetails?.types[0]?.type?.name} resist={false} weak={true} />
                 </WeaknessContainer>
                 <ResistanceContainer>
                     <ResistanceDescription>
                         Resistance
                     </ResistanceDescription>
-                    <PokemonWeak type1={pokemonDetails?.types[0]?.type?.name} type2={pokemonDetails?.types[1]?.type?.name} resist={true} weak={false} />
+                    <PokemonWeak type1={memoizedPokemonDetails?.types[0]?.type?.name} type2={memoizedPokemonDetails?.types[1]?.type?.name} resist={true} weak={false} />
                 </ResistanceContainer>
                 <GenerationContainer>
                     <ResistanceDescription>
                         Generation
                     </ResistanceDescription>
                     <GenerationDescription>
-                        {pokemonDetails.id <= 151 ? '1' : '2'}
+                        {memoizedPokemonDetails.id <= 151 ? '1' : '2'}
                     </GenerationDescription>
                 </GenerationContainer>
             </ElementContainer>

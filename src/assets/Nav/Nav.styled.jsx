@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link as RouterLink } from 'react-router-dom';
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 
 export const NavContainer = styled.nav`
@@ -18,4 +19,8 @@ justify-content: space-evenly;
 export const Link = styled(RouterLink)`
     color: white;
     
+`
+export const CartIcon = styled(MdOutlineShoppingCart)`
+    height: 1.5em;
+    width: 1.5em;
 `

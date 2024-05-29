@@ -1,14 +1,16 @@
 import React from "react";
-import { Title, HomeContainer, PokemonCatalog  } from "./Home.styled";
-import Pokemon from "../Pokemon/Pokemon";
+import { Title, HomeContainer, Text, TextContainer  } from "./Home.styled";
 function Home () {
     return (
-        <HomeContainer>
-            <Title>Catalog of Pokemon</Title>
-            <PokemonCatalog>
-                <Pokemon/>
-            </PokemonCatalog>
-        </HomeContainer>
+       <HomeContainer>
+        <Title>I am home</Title>
+        <TextContainer>
+        <Text>Thanks for visiting my pokemon card collection. This started as react fetch practice, but I enjoyed the nostalgia of making cards, so I kept it.</Text>
+        </TextContainer>
+        <TextContainer>
+        <Text> Hope you enjoy!</Text>
+        </TextContainer>
+       </HomeContainer>
     )
 }
 

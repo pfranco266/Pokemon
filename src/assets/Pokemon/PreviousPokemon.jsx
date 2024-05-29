@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useMemo} from "react";
 import { PreviousEvoSprite, PreviousEvolutionContainer, PreviousEvolutionName, PreviousEvolutionEvolve } from "./Pokemon.styled";
 
-function PreviousPokemon({cardPokemon, index, backgroundType}) {
+function PreviousPokemon({cardPokemon, backgroundType}) {
     
         const [species, setSpecies] = useState({
             id: null,
@@ -43,14 +43,17 @@ function PreviousPokemon({cardPokemon, index, backgroundType}) {
         fetchPreviousPoke();
     }, [])
 
+    const memoizedPreviousDetails = useMemo(() => species, [species]);
+
+
     return (
         <PreviousEvolutionContainer backgroundType={backgroundType}>
             <PreviousEvolutionEvolve>
                 evolves from: 
             </PreviousEvolutionEvolve>
-            <PreviousEvoSprite src={species.sprites.default}/>
+            <PreviousEvoSprite src={memoizedPreviousDetails.sprites.default}/>
             <PreviousEvolutionName>
-                {species.name}
+                {memoizedPreviousDetails.name}
             </PreviousEvolutionName>
         </PreviousEvolutionContainer>
     )

@@ -16,3 +16,14 @@ export const PokemonCatalog = styled.section`
  
     
 `
+
+export const Text = styled.p`
+    font-size: 2em;
+
+`
+export const TextContainer = styled.div`
+    display: flex;
+    width: 70%;
+    height: 60%;
+    margin: auto;
+`

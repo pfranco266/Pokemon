@@ -8,17 +8,18 @@ import { CartProvider } from './CartContext';  // Adjust the path based on your 
 import Home from "./assets/Home/Home"
 import Nav from "./assets/Nav/Nav"
 import Cart from './assets/Cart/Cart';
-
+import PokemonCatalogFC from './assets/Pokemon/PokemonCatalogue';
 
 
 function App() {
   const [cart, setCart] = useState([]);
   return (
-        <Container>
+        <Container on>
             <CartProvider>  
               <Nav/>
               <Routes>
                   <Route path="/" element={<Home />}/>
+                  <Route path="/pokemoncards" element={<PokemonCatalogFC />}/>
                   <Route path="/cart" element={<Cart />}/>
               </Routes>
             </CartProvider>
