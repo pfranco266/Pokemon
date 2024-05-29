@@ -9,16 +9,19 @@ import Home from "./assets/Home/Home"
 import Nav from "./assets/Nav/Nav"
 import Cart from './assets/Cart/Cart';
 import PokemonCatalogFC from './assets/Pokemon/PokemonCatalogue';
+import BrowsePokemon from "./assets/Collection/BrowsePokemon"
 
 
 function App() {
   const [cart, setCart] = useState([]);
   return (
-        <Container on>
+        <Container >
             <CartProvider>  
               <Nav/>
               <Routes>
                   <Route path="/" element={<Home />}/>
+                  <Route path="/pokemon" element={<BrowsePokemon />}/>
+
                   <Route path="/pokemoncards" element={<PokemonCatalogFC />}/>
                   <Route path="/cart" element={<Cart />}/>
               </Routes>

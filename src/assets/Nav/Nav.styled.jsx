@@ -3,14 +3,22 @@ import { Link as RouterLink } from 'react-router-dom';
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 
-export const NavContainer = styled.nav`
-position: fixed; /* Fixed at the top */
-top: 0; /* Align top edge */
-left: 0; /* Stretch across the top */
-width: 100%; /* Full width */
+export const NavContainer = styled.div`
+width: 100%; 
+height: 100%;
 background: #333; /* Dark background */
 color: #fff; /* White text */
-padding: 10px 20px; /* Some padding */
+box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+display: flex;
+justify-content: space-evenly;
+`
+
+export const NavBar = styled.nav`
+
+width: 100%;
+background: #333; 
+color: #fff; 
+padding: 10px 0;
 box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
 z-index: 1000; /* Ensure it's above other content */
 display: flex;
