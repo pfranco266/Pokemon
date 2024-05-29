@@ -251,6 +251,20 @@ background-color: blue;
 color: white;
 border: none;
 cursor: pointer;
+transition: transform .3s, box-shadow .2s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 1px 2px 2px gold;
+    cursor: pointer;
+    // Apply a downward movement to the entire button
+    
+  }
+  &:active {
+    transform: translateY(2px);
+    box-shadow: .5px 2px 2px #05d5c4;
+    color: #D5C405;
+    cursor: pointer;    
+  }
 `
 
 

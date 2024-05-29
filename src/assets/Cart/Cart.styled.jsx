@@ -17,3 +17,9 @@ export const Container = styled.div`
 export const Total = styled.h3`
   
 `
+
+export const TotalContainer = styled.div`
+display: flex;
+flex-direction: column;
+
+`

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ResistanceDescription, WeaknessDescription, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
 import colorMap from "./colorMap";
 import PokemonWeak from "./PokemonWeak"
 
 function PokemonCard({ index }) {
+    const someRef = useRef(0);
 
     const [pokemonDetails, setPokemonDetails] = useState({
         id: null,
@@ -23,7 +24,7 @@ function PokemonCard({ index }) {
     const [randomMove, setRandomMove] = useState(Math.floor(Math.random() * (pokemonDetails.moves.length || 1)));
     const [randomDescription, setRandomDescription] = useState(Math.floor(Math.random() * (pokemonDetails.description.length || 1)));
 
-    
+
     
 
     async function fetchSinglePokemon() {
@@ -114,6 +115,8 @@ function PokemonCard({ index }) {
         } 
     }
     useEffect(() => {
+        someRef.current += 1;
+        console.log(someRef)
         // Recalculate `rand` only when the list of moves changes
         setRandomMove(Math.floor(Math.random() * (pokemonDetails.moves.length || 1)));
         setRandomDescription(Math.floor(Math.random() * (pokemonDetails.description.length || 1)))
@@ -122,7 +125,8 @@ function PokemonCard({ index }) {
 
     useEffect(() => {
         fetchSinglePokemon();
-        
+        someRef.current += 1;
+        console.log(someRef)
     }, [index])
 
 
@@ -133,6 +137,7 @@ function PokemonCard({ index }) {
         <IndividualPokeContainer color1={pokemonDetails.types?.[0]?.type?.name || '#f1f1f1'} color2={pokemonDetails.types?.[1]?.type?.name}>
                 {/* instead of passing through type to be used again, i'll send through the secondary type for the backround color */}
             {pokemonDetails?.evolutionTree?.evolvesFrom?.name && <PreviousPokemon backgroundType={pokemonDetails.types} index={index} cardPokemon={pokemonDetails} />}
+            <p>Render Count: {someRef.current}</p>
 
             <Name>{pokemonDetails.name}</Name>
             <HitPoints>HP: {pokemonDetails.stats.hp}</HitPoints>

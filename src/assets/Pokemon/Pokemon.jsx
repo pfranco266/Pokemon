@@ -7,8 +7,9 @@ import CartContext from "../../CartContext";
 
 
 function Pokemon() {
-
+ 
     const { cart, setCart } = useContext(CartContext);
+    const {disableButton, setDisablebutton } = useState(false)
 
     const [pokeList, setPokeList] = useState({
         loading: true,
@@ -69,7 +70,7 @@ function Pokemon() {
     useEffect(() => {
         // Use the initialUrl for the first fetch
         fetchPokeList(pokeList.initialUrl);
-
+    
     }, []); // Dependency on initialUrl, if it changes, re-fetch
 
     // Handler for loading more items
@@ -81,6 +82,7 @@ function Pokemon() {
 
     return (
         <PokeContainer>
+
             {pokeList.loading && <h1>Loading, please wait....</h1>}
             {pokeList.error && <h4>Error: {pokeList.error}</h4>}
             <PokemonGridContainer>
@@ -95,7 +97,7 @@ function Pokemon() {
                                 $5.99
                             </Price>
                             <AddToCart aria-label="Add to cart" onClick={() => handleClick(index + 1)}>
-                                Learn More
+                                Add to Cart
                             </AddToCart>
                         </GridItems>
                     ))
@@ -105,8 +107,8 @@ function Pokemon() {
 
             </PokemonGridContainer>
 
-            {!pokeList.loading && pokeList.list.length < 151. && <LoadMore onClick={handleLoadMore}>Load more Pokemon</LoadMore>}
-
+            {!pokeList.loading && pokeList.list.length < 151. && <LoadMore disabled={disableButton} onClick={handleLoadMore}>Load more Pokemon</LoadMore>}
+                        {disableButton ? <p>I only like the first 250ish pokemon </p> : null}
         </PokeContainer>
     );
 }
