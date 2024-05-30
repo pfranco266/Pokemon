@@ -1,5 +1,28 @@
+//funtions are in call order 
 
 
+//called from Pokemon.jsx: 
+
+async function fetchPokeList(url) {
+    console.log(url)
+    try {
+        const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/ OR pokemon 
+        const data = await response.json();
+
+        // console.log('Pokemon.jsx', data)
+        // setPokeList(prev => ({
+        //     ...prev,
+        //     loading: false,
+        //     list: [...prev.list, ...data.results], 
+        //     nextUrl: data.next, // Update the next URL
+        // }));
+        return {data};
+    } catch (error) {
+
+    }
+}
+
+// called from PokemonCard.jsx, which calls fetchEvolutionData
 
 async function fetchSinglePokemon(index) {
     try {
@@ -10,7 +33,6 @@ async function fetchSinglePokemon(index) {
             fetch(pokemonDetailUrl).then(response => response.json()),
             fetch(pokemonSpeciesUrl).then(response => response.json())
         ]);
-            console.log(pokemonSpeciesData,pokemonDetailData)
         return {pokemonSpeciesData, pokemonDetailData};
 
         // if (pokemonSpeciesData.evolution_chain?.url) {
@@ -33,6 +55,9 @@ async function fetchSinglePokemon(index) {
     }
 }
 
+
+///called third, inside of fetchSinglePokemon, and also inside the pokemonCard.jsx component
+
 async function fetchEvolutionData(evolutionChainUrl, evolvesFromUrl) {
     try {
         const evolutionChainPromise = fetch(evolutionChainUrl).then(response => response.json());
@@ -53,5 +78,4 @@ async function fetchEvolutionData(evolutionChainUrl, evolvesFromUrl) {
 
 
 
-
-export {fetchSinglePokemon, fetchEvolutionData};
+export {fetchSinglePokemon, fetchEvolutionData, fetchPokeList};

@@ -1,5 +1,6 @@
 import React, {useReducer} from "react";
-import { HomeContainer, Title, PokemonGridContainer } from "../Home/Home.styled";
+import { HomeContainer, Title } from "../Home/Home.styled";
+import { PokemonGridContainer } from "../Pokemon/Pokemon.styled";
 import { fetchEvolutionData, fetchSinglePokemon } from "../Reducers/pokeAPI";
 import {initialPokeDetails, pokemonReducer} from "../Reducers/pokemonReducer";
 

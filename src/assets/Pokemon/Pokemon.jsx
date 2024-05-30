@@ -2,14 +2,17 @@ import React, { useState, useEffect, useContext } from "react";
 import { PokemonGridContainer, PokemonGridItem, LoadMore, PokeContainer, AddToCart, GridItems, Price } from "./Pokemon.styled";
 import PokemonCard from "./PokemonCard"
 import CartContext from "../../CartContext";
+import { fetchPokeList } from "../Reducers/pokeAPI"
 // import { v4 as uuid } from 'uuid';
 
 
 
 function Pokemon() {
- 
+
+
+
     const { cart, setCart } = useContext(CartContext);
-    const {disableButton, setDisablebutton } = useState(false)
+    const { disableButton, setDisablebutton } = useState(false)
 
     const [pokeList, setPokeList] = useState({
         loading: true,
@@ -18,6 +21,8 @@ function Pokemon() {
         initialUrl: `https://pokeapi.co/api/v2/pokemon/`,
         nextUrl: null,
     });
+
+
 
 
 
@@ -36,26 +41,49 @@ function Pokemon() {
                 return [...prev, {
                     index: pokemonIndex, // This is the Pokémon's unique identifier, like "1" for Bulbasaur
                     // id: uuid(), // Unique ID for each entry
-                    
+
                     amount: 1, // Start with one item
                 }];
             }
         });
     };
 
-    async function fetchPokeList(url) {
-        try {
-            const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/
-            const data = await response.json();
-            
+    // async function fetchPokeList(url) {
+    //     try {
+    //         const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/
+    //         const data = await response.json();
 
-            // console.log('Pokemon.jsx', data)
-            setPokeList(prev => ({
+
+    //         // console.log('Pokemon.jsx', data)
+    //         setPokeList(prev => ({
+    //             ...prev,
+    //             loading: false,
+    //             list: [...prev.list, ...data.results], 
+    //             nextUrl: data.next, // Update the next URL
+    //         }));
+    //     } catch (error) {
+    //         setPokeList(prev => ({
+    //             ...prev,
+    //             loading: false,
+    //             error: error.message
+    //         }));
+    //     }
+    // }   
+
+
+    const fetchData = async (url) => {
+        try {
+
+            const { data } = await fetchPokeList(url);
+            console.log(data)
+            setPokeList((prev) => ({
                 ...prev,
                 loading: false,
-                list: [...prev.list, ...data.results], 
-                nextUrl: data.next, // Update the next URL
+                error: data.error,
+                list: [ ...prev.list, ...data.results],
+                nextUrl: data.next,
             }));
+
         } catch (error) {
             setPokeList(prev => ({
                 ...prev,
@@ -69,14 +97,18 @@ function Pokemon() {
 
     useEffect(() => {
         // Use the initialUrl for the first fetch
-        fetchPokeList(pokeList.initialUrl);
-    
-    }, []); // Dependency on initialUrl, if it changes, re-fetch
 
-    // Handler for loading more items
-    const handleLoadMore = () => {
-        if (pokeList.nextUrl) {
-            fetchPokeList(pokeList.nextUrl);
+
+        fetchData(pokeList.initialUrl);
+
+    }, []);
+
+   async function handleLoadMore() {
+        console.log(pokeList)
+
+
+        if (pokeList?.nextUrl) {
+            await fetchData(pokeList.nextUrl)
         }
     };
 
@@ -108,7 +140,7 @@ function Pokemon() {
             </PokemonGridContainer>
 
             {!pokeList.loading && pokeList.list.length < 151. && <LoadMore disabled={disableButton} onClick={handleLoadMore}>Load more Pokemon</LoadMore>}
-                        {disableButton ? <p>I only like the first 250ish pokemon </p> : null}
+            {disableButton ? <p>I only like the first 250ish pokemon </p> : null}
         </PokeContainer>
     );
 }

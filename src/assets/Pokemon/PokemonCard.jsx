@@ -17,8 +17,7 @@ function PokemonCard({ index }) {
       const fetchData = async () => {  
         try {
           const {pokemonSpeciesData, pokemonDetailData} = await fetchSinglePokemon(index);
-          console.log('spec', pokemonDetailData);
-          console.log('pokmeonspeee', pokemonSpeciesData )
+        
           if (pokemonSpeciesData.evolution_chain?.url) {
 
             const evolvesFromUrl = pokemonSpeciesData.evolves_from_species?.url || '';
