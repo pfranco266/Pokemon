@@ -48,4 +48,10 @@ async function fetchEvolutionData(evolutionChainUrl, evolvesFromUrl) {
     }
 }
 
+
+
+
+
+
+
 export {fetchSinglePokemon, fetchEvolutionData};
