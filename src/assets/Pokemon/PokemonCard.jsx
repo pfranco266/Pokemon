@@ -1,34 +1,15 @@
-import React, { useState, useEffect, useRef, useMemo, useReducer } from "react";
+import React, { useState, useEffect, useMemo, useReducer } from "react";
 import { ResistanceDescription, WeaknessDescription, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
 import PokemonWeak from "./PokemonWeak"
 import { pokemonReducer, initialPokeDetails } from "../Reducers/pokemonReducer";
 
 function PokemonCard({ index }) {
-    const someRef = useRef(0);
 
     const [pokemonDetails, dispatch] = useReducer(pokemonReducer, initialPokeDetails);
 
-  
-    //USE STATE SOLUTION
-    // const [pokemonDetails, setPokemonDetails] = useState({
-    //     id: null,
-    //     name: null,
-    //     sprites: {},
-    //     types: [],
-    //     stats: {},
-    //     species: {},
-    //     height: null,
-    //     weight: null,
-    //     moves: [],
-    //     evolutionTree: {},
-    //     description: []
-    // })
-
     const [randomMove, setRandomMove] = useState(Math.floor(Math.random() * (pokemonDetails.moves.length || 1)));
     const [randomDescription, setRandomDescription] = useState(Math.floor(Math.random() * (pokemonDetails.description.length || 1)));
-
-
 
 
     async function fetchSinglePokemon() {
@@ -51,59 +32,7 @@ function PokemonCard({ index }) {
                     type: 'setPokemonDetails',
                     payload: { pokemonDetailData, pokemonSpeciesData, evolutionData }
                 })
-
-                // setPokemonDetails(prev => {
-                //     return {
-                //         ...prev,
-                //         id: pokemonDetailData.id,
-                //         legendary: pokemonSpeciesData.is_legendary,
-                //         mythical: pokemonSpeciesData.is_mythical,
-                //         name: pokemonDetailData.name,
-                //         height: (pokemonDetailData.height / 10),
-                //         weight: pokemonDetailData.weight,
-                //         sprites: {
-                //             default: pokemonDetailData.sprites.front_default,
-                //             backDefault: pokemonDetailData.sprites.back_default,
-                //             frontShiny: pokemonDetailData.sprites.front_shiny,
-                //             backShiny: pokemonDetailData.sprites.back_shiny,
-
-                //         },
-                //         stats: {
-                //             hp: pokemonDetailData.stats[0].base_stat,
-                //             attack: pokemonDetailData.stats[1].base_stat,
-                //             defense: pokemonDetailData.stats[2].base_stat,
-                //             specialAttack: pokemonDetailData.stats[3].base_stat,
-                //             specialDefense: pokemonDetailData.stats[4].base_stat,
-                //             speed: pokemonDetailData.stats[5].base_stat,
-                //         },
-                //         species: evolutionData,
-                //         types: pokemonDetailData.types,
-                //         moves: pokemonDetailData.moves,
-                //         evolutionTree: evolutionData,
-                //         description: [
-                //             pokemonSpeciesData.flavor_text_entries[0].flavor_text,
-                //             pokemonSpeciesData.flavor_text_entries[1].flavor_text,
-                //             pokemonSpeciesData.flavor_text_entries[2].flavor_text,
-                //             pokemonSpeciesData.flavor_text_entries[3].flavor_text,
-                //             pokemonSpeciesData.flavor_text_entries[4].flavor_text
-                //         ]
-
-                //     }
-
-                // })
-
-            } else {
-                // setPokemonDetails(prev => ({
-                //     ...prev,
-                //     id: pokemonDetailData.id,
-                //     name: pokemonDetailData.name,
-                //     evolutionDetails: null
-                // }));
-                
-
-            }
-
-
+            } 
         } catch (error) {
             console.log(error.message)
             dispatch({
@@ -113,8 +42,6 @@ function PokemonCard({ index }) {
 
         }
     }
-
-
 
     async function fetchEvolutionData(evolutionChainUrl, evolvesFromUrl) {
         try {
@@ -133,16 +60,13 @@ function PokemonCard({ index }) {
 
     useEffect(() => {
         fetchSinglePokemon();
-        someRef.current += 1;
-        console.log(someRef)
     }, [index])
 
     const memoizedPokemonDetails = useMemo(() => pokemonDetails, [pokemonDetails]);
 
 
     useEffect(() => {
-        someRef.current += 1;
-        console.log(someRef);
+
         setRandomMove(Math.floor(Math.random() * (memoizedPokemonDetails.moves.length || 1)));
         setRandomDescription(Math.floor(Math.random() * (memoizedPokemonDetails.description.length || 1)));
     }, [memoizedPokemonDetails.moves.length, memoizedPokemonDetails.description.length]);
