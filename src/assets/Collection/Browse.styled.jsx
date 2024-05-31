@@ -1,23 +1,29 @@
 import styled from "styled-components";
+import { LoadMore } from "../Pokemon/Pokemon.styled";
+import { HomeContainer } from "../Home/Home.styled";
 
+export const OuterContainer = styled(HomeContainer)`
+  flex-direction: column;
+  margin-bottom: 5rem;
+`
 
-export const PokemonGridContainer = styled.div`
+export const BrowseContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 500px);  
-  grid-auto-rows: 300px auto; 
-  gap: 30px;
+  grid-auto-rows: minmax(300px, auto); 
   justify-content: center; 
-  @media(max-width: 700px) {
-    grid-template-columns: repeat(1, 300px);
+  @media(min-width: 700px) {
+    grid-template-columns: repeat(1, 500px);
+    gap: 30px;
   }
 
-  @media(max-width: 1000px) {
-    grid-template-columns: repeat(2, 300px);
+  @media(min-width: 1000px) {
+    grid-template-columns: repeat(2, 500px);
   }
 
-  @media(max-width: 1350px) {
-    grid-template-columns: repeat(3, 300px);
+  @media(min-width: 1350px) {
+    grid-template-columns: repeat(3, 500px);
   }
-
 `;
+
 

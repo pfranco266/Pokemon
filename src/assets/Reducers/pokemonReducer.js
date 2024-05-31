@@ -72,3 +72,4 @@ function pokemonReducer(state, action) {
 };
 
 export {initialPokeDetails, pokemonReducer};
+

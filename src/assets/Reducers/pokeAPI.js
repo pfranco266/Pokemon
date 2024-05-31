@@ -4,18 +4,10 @@
 //called from Pokemon.jsx: 
 
 async function fetchPokeList(url) {
-    console.log(url)
     try {
-        const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/ OR pokemon 
+        const response = await fetch(url);  
         const data = await response.json();
 
-        // console.log('Pokemon.jsx', data)
-        // setPokeList(prev => ({
-        //     ...prev,
-        //     loading: false,
-        //     list: [...prev.list, ...data.results], 
-        //     nextUrl: data.next, // Update the next URL
-        // }));
         return {data};
     } catch (error) {
 

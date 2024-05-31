@@ -6,7 +6,8 @@ import colorMap from './colorMap';
 export const PokemonGridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 300px); 
-  grid-auto-rows: 500px auto; 
+  grid-auto-rows: minmax(500px, auto); 
+
   gap: 30px;
   justify-content: center; 
   @media(max-width: 1350px) {

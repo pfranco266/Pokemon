@@ -8,7 +8,9 @@ color: rgba(255, 255, 255, 0.87);
 `
 
 export const HomeContainer = styled.div`
-
+display: flex;
+align-items: center;
+justify-content: center;
 `
 
 export const PokemonCatalog = styled.section`

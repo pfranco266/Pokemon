@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import { PokemonGridContainer, PokemonGridItem, LoadMore, PokeContainer, AddToCart, GridItems, Price } from "./Pokemon.styled";
 import PokemonCard from "./PokemonCard"
 import CartContext from "../../CartContext";
 import { fetchPokeList } from "../Reducers/pokeAPI"
+import { initialPokeList, pokeListReducer } from "../Reducers/pokemonListReducer"
 // import { v4 as uuid } from 'uuid';
 
 
@@ -14,13 +15,15 @@ function Pokemon() {
     const { cart, setCart } = useContext(CartContext);
     const { disableButton, setDisablebutton } = useState(false)
 
-    const [pokeList, setPokeList] = useState({
-        loading: true,
-        error: '',
-        list: [],
-        initialUrl: `https://pokeapi.co/api/v2/pokemon/`,
-        nextUrl: null,
-    });
+    // const [pokeList, setPokeList] = useState({
+    //     loading: true,
+    //     error: '',
+    //     list: [],
+    //     initialUrl: `https://pokeapi.co/api/v2/pokemon/`,
+    //     nextUrl: null,
+    // });
+
+    const [pokeList, dispatch] = useReducer(pokeListReducer, initialPokeList);
 
 
 
@@ -72,24 +75,20 @@ function Pokemon() {
 
 
     const fetchData = async (url) => {
+        dispatch({ type: 'setLoading' });
         try {
 
             const { data } = await fetchPokeList(url);
-            console.log(data)
-            setPokeList((prev) => ({
-                ...prev,
-                loading: false,
-                error: data.error,
-                list: [ ...prev.list, ...data.results],
-                nextUrl: data.next,
-            }));
+            dispatch({
+                type: 'setPokeList',
+                payload: data
+            });
 
         } catch (error) {
-            setPokeList(prev => ({
-                ...prev,
-                loading: false,
-                error: error.message
-            }));
+            dispatch({
+                type: 'setError',
+                payload: error.message
+            });
         }
     }
 
@@ -103,13 +102,21 @@ function Pokemon() {
 
     }, []);
 
-   async function handleLoadMore() {
-        console.log(pokeList)
+    async function handleLoadMore() {
 
-
-        if (pokeList?.nextUrl) {
-            await fetchData(pokeList.nextUrl)
+        dispatch({ type: 'setLoading' });
+        
+        try {
+            if (pokeList?.nextUrl) {
+                await fetchData(pokeList.nextUrl)
+            }
+        } catch (error) {
+            dispatch({
+                type: 'setError',
+                payload: error.message
+            })
         }
+
     };
 
     return (

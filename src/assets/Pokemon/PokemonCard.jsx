@@ -32,8 +32,8 @@ function PokemonCard({ index }) {
 
       } catch (error) {
                   dispatch({
-            type: 'error',
-            action: error.message
+            type: 'setError',
+            payload: error.message
         })
         }        
        
