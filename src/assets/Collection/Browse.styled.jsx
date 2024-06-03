@@ -94,8 +94,8 @@ export const SinglePokemonContainer = styled.div`
     position: absolute;
     bottom: 0%;
     box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5); /* Inner shadow for texture */
-    border-bottom-right-radius: 22px;
-    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     z-index: 1;
 
   }
@@ -143,7 +143,7 @@ export const TypesContainer = styled.div`
   flex-direction: column;
   align-items: baseline;
   position: absolute;
-  bottom: 25%;
+  bottom: 30%;
   left: 5%;
   gap: 1rem;
 
