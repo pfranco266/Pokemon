@@ -1,11 +1,13 @@
 import React, {useEffect, useReducer, useMemo} from "react";
-
+import { Link } from "../Nav/Nav.styled";
 import { fetchSinglePokemon, fetchEvolutionData } from "../Reducers/pokeAPI";
 import { pokemonReducer, initialPokeDetails } from "../Reducers/pokemonReducer";
-import { HomeContainer } from "../Home/Home.styled";
+import {PokemonSVG, SinglePokemonContainer, PokemonName, PokemonIndex} from "./Browse.styled"
+import PokemonTypes from "./PokemonTypes"
+import Pokeball from "./Pokeball";
 
 
-function SinglePokeCard({poke, index}) {
+function SinglePokeCard({ index}) {
 
 const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPokeDetails);
 
@@ -39,22 +41,42 @@ const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPo
     }
 
 
-
     useEffect(() => {
         fetchData(index);
+
     }, [])
 
-
+    //TYPE FOR LATER
+    // memoPokemon.types[0].type.name
     const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
 
+  
+ 
+    
+    const calculateHeight = () => {
+        const baseHeight = 10; // Base height in em
+        const maxHeight = 15; // Maximum height in em
+
+      const calculatedHeight = baseHeight + pokemonDetails.height * 0.25;
+      const min = Math.min(calculatedHeight, maxHeight);
+      return min;
+    };
+
     return (
-        <HomeContainer>
-            {memoPokemon.name}
-            
+        
+        <SinglePokemonContainer type={memoPokemon?.types[0]?.type?.name}>
+           <PokemonIndex> #{index}</PokemonIndex> <PokemonName> {memoPokemon.name}</PokemonName>
 
+           
+           
+                <PokemonTypes key={index} types={memoPokemon?.types}/>
+                <Pokeball/>
+         
 
-
-        </HomeContainer>
+            <PokemonSVG size={calculateHeight} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index}.svg`} alt={memoPokemon.name} />
+        
+        </SinglePokemonContainer>
+      
     )
 }
 

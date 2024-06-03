@@ -1,10 +1,8 @@
 import React, {useEffect, useReducer, useState} from "react";
-import { HomeContainer, Title } from "../Home/Home.styled";
-import {BrowseContainer, OuterContainer} from "./Browse.styled"
+import {BrowseContainer, OuterBrowseContainer} from "./Browse.styled"
 import { LoadMore } from "../Pokemon/Pokemon.styled";
-import {fetchPokeList,  fetchEvolutionData, fetchSinglePokemon } from "../Reducers/pokeAPI";
+import {fetchPokeList} from "../Reducers/pokeAPI";
 import {pokeListReducer, initialPokeList} from "../Reducers/pokemonListReducer"
-import {initialPokeDetails, pokemonReducer} from "../Reducers/pokemonReducer";
 import SinglePokeCard from "./SinglePokeCard"
 
 
@@ -13,7 +11,6 @@ function BrowsePokemon() {
 
     const [ disableButton, setDisablebutton ] = useState(false)
 
-const [pokemonDetails, pokemonDetailDispatch] = useReducer(pokemonReducer, initialPokeDetails);
 
 const [pokemonList, pokeListDispatch] = useReducer(pokeListReducer, initialPokeList);
 
@@ -41,7 +38,7 @@ async function handleLoadMore() {
     pokeListDispatch({ type: 'setLoading' });
     
     try {
-        if (pokemonList.list.length >= 151) {
+        if (pokemonList.list.length >= 251) {
             setDisablebutton(true);
             return;
         }
@@ -66,33 +63,34 @@ useEffect(() => {
 
     return (
 
-        <OuterContainer>
+        <OuterBrowseContainer>
+       
 
             <BrowseContainer>
                {pokemonList && pokemonList?.list?.map((poke, index) => {
                 return (
-                    <div key={index}>
+                 
                         
-                        <SinglePokeCard index={index + 1} poke={poke}/>
-                    </div>
+                        <SinglePokeCard  key={index} index={index + 1} />
+                   
                 )
                })}
             </BrowseContainer>
             
-               {!pokemonList.loading && pokemonList?.list.length < 151 && 
+               {!pokemonList.loading && pokemonList?.list.length < 251 && 
                <LoadMore disabled={disableButton} onClick={handleLoadMore}>
                Load more Pokemon
              </LoadMore>
             
              }
 
-             {pokemonList?.list.length > 151 ? <h1>I only like the first 250ish Pokemon</h1> : null}
+             {pokemonList?.list.length > 251 ? <h1>I only like the first 250ish Pokemon</h1> : null}
 
 
       
    
             
-        </OuterContainer>
+        </OuterBrowseContainer>
     )
 }
 

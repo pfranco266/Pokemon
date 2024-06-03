@@ -9,6 +9,7 @@ import { IoIosWater } from "react-icons/io"
 const colorMap = {
     water: {
         color: '#2389da',
+        darkerColor: '#1a6aa8',
         icon: IoIosWater,
         typeChart: {
             bug: 1,
@@ -33,6 +34,7 @@ const colorMap = {
     },
     fire: {
         color: '#ff5a00',
+        darkerColor: '#cc4800',
         icon: BsFire,
         typeChart: {
             bug: 0.5,
@@ -57,6 +59,7 @@ const colorMap = {
     },
     ice: {
         color: '#368BC1',
+        darkerColor: '#2a6e98',
         icon: FaRegSnowflake,
         typeChart: {
             bug: 1,
@@ -81,6 +84,7 @@ const colorMap = {
     },
     psychic: {
         color: '#635c84',
+        darkerColor: '#4e4968',
         icon: GiPsychicWaves,
         typeChart: {
             bug: 2,
@@ -105,6 +109,7 @@ const colorMap = {
     },
     grass: {
         color: '#40a829',
+        darkerColor: '#338620',
         icon: GiHighGrass,
         typeChart: {
             bug: 2,
@@ -129,6 +134,7 @@ const colorMap = {
     },
     normal: {
         color: '#A8A77A',
+        darkerColor: '#868659',
         icon: GiPolarStar,
         typeChart: {
             bug: 1,
@@ -153,6 +159,7 @@ const colorMap = {
     },
     electric: {
         color: '#f7e12c',
+        darkerColor: '#c6b222',
         icon: BsFillLightningFill,
         typeChart: {
             bug: 1,
@@ -177,6 +184,7 @@ const colorMap = {
     },
     fighting: {
         color: '#C22E28',
+        darkerColor: '#991e1b',
         icon: FaHandBackFist,
         typeChart: {
             bug: 0.5,
@@ -201,6 +209,7 @@ const colorMap = {
     },
     poison: {
         color: '#A33EA1',
+        darkerColor: '#822f80',
         icon: GiPoisonGas, 
         typeChart: {
             bug: 0.5,
@@ -225,6 +234,7 @@ const colorMap = {
     },
     rock: {
         color: '#B6A136',
+        darkerColor: '#8f802a',
         icon: GiStoneSphere,
         typeChart: {
             bug: 1,
@@ -249,6 +259,7 @@ const colorMap = {
     },
     ground: {
         color: '#E2BF65',
+        darkerColor: '#b3974e',
         icon: FaMountainSun ,
         typeChart: {
             bug: 1,
@@ -273,6 +284,7 @@ const colorMap = {
     },
     flying: {
         color: '#A98FF3',
+        darkerColor: '#8773c2',
         icon: GiAngelWings ,
         typeChart: {
             bug: 0.5,
@@ -297,6 +309,7 @@ const colorMap = {
     },
     bug: {
         color: '#A6B91A',
+        darkerColor: '#849014',
         icon: FaBug ,
         typeChart: {
             bug: 1,
@@ -321,6 +334,7 @@ const colorMap = {
     },
     ghost: {
         color: '#735797',
+        darkerColor: '#5b4678',
         icon: GiGhost ,
         typeChart: {
             bug: 0.5,
@@ -345,6 +359,7 @@ const colorMap = {
     },
     dragon: {
         color: '#6F35FC',
+        darkerColor: '#582abf',
         icon: FaDragon ,
         typeChart: {
             bug: 1,
@@ -369,6 +384,7 @@ const colorMap = {
     },
     dark: {
         color: '#705746',
+        darkerColor: '#564336',
         icon: CgDarkMode,
         typeChart: {
             bug: 2,
@@ -393,6 +409,7 @@ const colorMap = {
     },
     steel: {
         color: '#B7B7CE',
+        darkerColor: '#9292a5',
         icon: GiMetalScales ,
         typeChart: {
             bug: 0.5,
@@ -417,6 +434,7 @@ const colorMap = {
     },
     fairy: {
         color: '#D685AD',
+        darkerColor: '#aa6b8a',
         icon: GiFairyWand , 
         typeChart: {
             bug: 0.5,
@@ -444,3 +462,24 @@ const colorMap = {
 
 
 export default colorMap
+
+
+// give me a darker version of he following: 
+// water: #2389da
+// fire: #ff5a00
+// ice: #368BC1
+// psychic #635c84
+// grass: #40a829
+// normal: #A8A77A
+// electric: #f7e12c
+//  fighting #C22E28
+// Poison: #A33EA1
+// rock: #B6A136
+// ground : #E2BF65
+// flying: #A98FF3
+// bug: #A6B91A
+// ghost: #735797
+// dragon: #6F35FC
+// dark: #705746
+// steel: #B7B7CE
+// fairy: #D685AD
