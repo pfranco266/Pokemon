@@ -13,7 +13,7 @@ function PreviousPokemon({cardPokemon, backgroundType}) {
         });
 
 
-    async function fetchPreviousPoke(url) {
+    async function fetchPreviousPoke() {
 
         try {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${cardPokemon.evolutionTree.evolvesFrom.id}/`); //    https://pokeapi.co/api/v2/pokemon-species/16/

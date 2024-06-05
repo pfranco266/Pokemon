@@ -1,5 +1,4 @@
 import React, {useEffect, useReducer, useMemo} from "react";
-import { Link } from "../Nav/Nav.styled";
 import { fetchSinglePokemon, fetchEvolutionData } from "../Reducers/pokeAPI";
 import { pokemonReducer, initialPokeDetails } from "../Reducers/pokemonReducer";
 import {PokemonSVG, SinglePokemonContainer, PokemonName, PokemonIndex} from "./Browse.styled"
@@ -19,12 +18,15 @@ const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPo
             })
             try {
                 const {pokemonSpeciesData, pokemonDetailData} = await fetchSinglePokemon(index);
-              
-                if (pokemonSpeciesData.evolution_chain?.url) {
-      
+
+                if (pokemonSpeciesData?.evolution_chain?.url) {
+                    
                   const evolvesFromUrl = pokemonSpeciesData.evolves_from_species?.url || '';
+
                   const evolutionData = await fetchEvolutionData(pokemonSpeciesData.evolution_chain.url, evolvesFromUrl);
-              
+                //   console.log(index, pokemonDetailData.name, evolutionData)
+
+
       
                   setPokemonDetails({
                       type: 'setPokemonDetails',
@@ -50,21 +52,13 @@ const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPo
     // memoPokemon.types[0].type.name
     const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
 
-  
  
     
-    const calculateHeight = () => {
-        const baseHeight = 10; // Base height in em
-        const maxHeight = 15; // Maximum height in em
-
-      const calculatedHeight = baseHeight + pokemonDetails.height * 0.25;
-      const min = Math.min(calculatedHeight, maxHeight);
-      return min;
-    };
+    
 
     return (
         
-        <SinglePokemonContainer type={memoPokemon?.types[0]?.type?.name}>
+        <SinglePokemonContainer to={`/pokemon/${memoPokemon?.id}`} type={memoPokemon?.types[0]?.type?.name}>
            <PokemonIndex> #{index}</PokemonIndex> <PokemonName> {memoPokemon.name}</PokemonName>
 
            
@@ -73,8 +67,8 @@ const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPo
                 <Pokeball/>
          
 
-            <PokemonSVG size={calculateHeight} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index}.svg`} alt={memoPokemon.name} />
-        
+            <PokemonSVG src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index}.svg`} alt={memoPokemon.name} />
+
         </SinglePokemonContainer>
       
     )

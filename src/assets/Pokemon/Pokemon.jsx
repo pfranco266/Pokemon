@@ -30,7 +30,6 @@ function Pokemon() {
 
 
     const handleClick = (pokemonIndex) => {
-        console.log(cart);
         setCart((prev) => {
             // Find if an item with the same pokemonIndex is already in the cart
             const existingItemIndex = prev.findIndex(item => item.index === pokemonIndex);

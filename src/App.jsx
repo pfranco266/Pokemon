@@ -10,6 +10,7 @@ import Nav from "./assets/Nav/Nav"
 import Cart from './assets/Cart/Cart';
 import PokemonCatalogFC from './assets/Pokemon/PokemonCatalogue';
 import BrowsePokemon from "./assets/Collection/BrowsePokemon"
+import MoreInfoLanding from "./assets/PokemonMoreInfo/MoreInfoLanding"
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
                   <Route path="/pokemoncards" element={<PokemonCatalogFC />}/>
                   <Route path="/cart" element={<Cart />}/>
+                  <Route path="/pokemon/:id" element={<MoreInfoLanding/>}/>
               </Routes>
             </CartProvider>
 

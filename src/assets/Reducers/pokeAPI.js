@@ -17,8 +17,9 @@ async function fetchPokeList(url) {
 // called from PokemonCard.jsx, which calls fetchEvolutionData
 
 async function fetchSinglePokemon(index) {
-    try {
+    try {      
         const pokemonDetailUrl = `https://pokeapi.co/api/v2/pokemon/${index}/`;
+
         const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${index}/`;
 
         const [pokemonDetailData, pokemonSpeciesData] = await Promise.all([

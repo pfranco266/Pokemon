@@ -1,4 +1,3 @@
-
 const initialPokeDetails = {
     id: null,
     legendary: false,
@@ -33,6 +32,10 @@ function pokemonReducer(state, action) {
     switch (action.type) {
         case 'setPokemonDetails':
             const { pokemonDetailData, pokemonSpeciesData, evolutionData } = action.payload;
+                // console.log(pokemonDetailData.name, 'next', evolutionData.chain.evolves_to[0]?.species?.name)
+                console.log(pokemonDetailData.name, 'first evo', evolutionData, 'next', evolutionData.chain.species)
+
+
             return {
                 ...state,
                 id: pokemonDetailData.id,
@@ -55,12 +58,41 @@ function pokemonReducer(state, action) {
                     specialDefense: pokemonDetailData.stats[4].base_stat,
                     speed: pokemonDetailData.stats[5].base_stat,
                 },
+                evolutions: [
+
+                ],
+                
+                firstForm: {
+                    name: evolutionData?.chain?.species?.name || null,  //this looks right
+                    id: evolutionData?.chain?.species?.id || null,
+                    sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${evolutionData?.chain?.species?.id}.svg`|| null, 
+                },
+                secondForm: {
+                    name: evolutionData?.chain?.evolves_to[0]?.species?.name || null, 
+                    id: evolutionData?.chain?.evolves_to[0]?.species?.id || null,
+                    sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${evolutionData?.chain.evolves_to[0]?.species?.id}.svg` || null,
+                },
+                thirdForm: {
+                    name: evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.name || null,  //this looks right
+                    id: evolutionData?.chain.evolves_to[0]?.evolves_to[0]?.species?.id  || null,
+                    sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.id}.svg` || null,
+                },
                 species: evolutionData,
                 types: pokemonDetailData.types,
                 moves: pokemonDetailData.moves,
                 evolutionTree: evolutionData,
                 description: pokemonSpeciesData.flavor_text_entries.slice(0, 5).map(entry => entry.flavor_text)
             };
+
+ 
+                           // console.log(pokemonDetailData)
+            // console.log(pokemonSpeciesData.evolution_chain) //{url: 'https://pokeapi.co/api/v2/evolution-chain/15/'}
+            // console.log(pokemonSpeciesData.name, evolutionData) //use these to see pokemon that evolves to who
+            //for previous evolution, calling from ivysaur, give bulbasaur: evolutionData.evolvesFrom.name || id
+            // for next evolution:calling from bulbasaur, give iveysaur: evolutionData.chain.evolves_to[0].species.name
+            // for final evolution calling from bulbasaur, gives venasaur: evolutionData.chain.evolves_to[0].evolves_to[0].species
+  
+                  
         case 'setError':
             return {
                 ...state,
@@ -72,4 +104,11 @@ function pokemonReducer(state, action) {
 };
 
 export {initialPokeDetails, pokemonReducer};
+
+
+
+
+// pokemonDetailData gives 
+
+
 

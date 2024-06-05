@@ -11,7 +11,6 @@ function pokeListReducer (state, action) {
         case 'setPokeList':
             const data = action.payload;
             // console.log('act', action, 'data', data)
-            console.log('stateb', state)
             return {
                 ...state, 
                 loading: false,

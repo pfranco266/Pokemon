@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { HomeContainer } from "../Home/Home.styled";
 import colorMap from "../Pokemon/colorMap";
 import { keyframes } from 'styled-components';
+import { Link } from "react-router-dom";
 
 const rotatePokeball = keyframes`
   0% {
@@ -49,8 +50,8 @@ export const BrowseContainer = styled.div`
 `;
 
 export const PokemonSVG = styled.img`
-height: ${({ size }) => size}em;
-width: ${({ size }) => size}em;
+height: 12em;
+width: 12em;
 
 position: absolute;
 z-index: 2;
@@ -63,12 +64,13 @@ transition: transform 0.4s ease;
 
 `
 
-export const SinglePokemonContainer = styled.div`
+export const SinglePokemonContainer = styled(Link)`
   position: relative;
   cursor: pointer;
   border: 3px solid yellow;
   border-radius: 20px;
   z-index: 1;
+  color: inherit; // not link color
   background-color: ${({ type }) => {
     return colorMap[type]?.color
   }};
@@ -90,13 +92,14 @@ export const SinglePokemonContainer = styled.div`
     content: '';
     width: 100%;
     height: 15%;
-    background-color:#5C4033;
+    background-color: #5C4033;
     position: absolute;
     bottom: 0%;
     box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5); /* Inner shadow for texture */
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     z-index: 1;
+    
 
   }
 
