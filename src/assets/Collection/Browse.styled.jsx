@@ -135,7 +135,7 @@ position: absolute;
 z-index: 2;
 opacity: .5;
 top: 2%;
-left: 10%;
+left: 5%;
 `
 
 export const LearnMore = styled.button`

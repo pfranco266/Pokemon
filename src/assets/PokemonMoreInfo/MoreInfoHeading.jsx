@@ -5,10 +5,8 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 
 function MoreInfoHeading({ pokeId, memoPokemon }) {
-    console.log(memoPokemon?.types[0]?.type?.name)
 
 
-    console.log('test', pokeId, memoPokemon.name)
     function handleClick () {
         
     }

@@ -13,7 +13,7 @@ function Evolution({  memoPokemon }) {
             {memoPokemon && memoPokemon?.evolutions?.map((poke, index) => {
                 return (
                    
-                        <SinglePokeCard index={poke.id}/>
+                        <SinglePokeCard key={poke.id} index={poke.id}/>
                  
                 )
             })}

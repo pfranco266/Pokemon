@@ -25,7 +25,6 @@ function MoreInfoLanding () {
   
               const evolvesFromUrl = pokemonSpeciesData.evolves_from_species?.url || '';
               const evolutionData = await fetchEvolutionData(pokemonSpeciesData.evolution_chain.url, evolvesFromUrl);
-          
   
               setPokemonDetails({
                   type: 'setPokemonDetails',
@@ -45,7 +44,7 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
 
     useEffect(()=> {
         fetchData(pokeId);
-    },[memoPokemon])
+    },[pokeId])
 
     return (
         <>

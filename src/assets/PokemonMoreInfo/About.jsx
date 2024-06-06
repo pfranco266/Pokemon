@@ -5,6 +5,8 @@ import { Title } from "../Home/Home.styled";
 
 
 function About({ memoPokemon }) {
+
+    console.log('this stupid shit', memoPokemon.description)
     return (
         <FlexColumnContainer>
             <Title>
@@ -12,10 +14,24 @@ function About({ memoPokemon }) {
             </Title>
             <AboutInfoContainer>
                 <AboutImgContainer>
-                    <AboutSVG src={memoPokemon?.sprites?.default} alt={memoPokemon.name} />
+                    <AboutSVG src={memoPokemon?.sprites?.showdown} alt={memoPokemon.name} />
                 </AboutImgContainer>
                 <AboutTextContainer>
-                    {memoPokemon.description}
+                    <ul>
+                        <li>
+                        {memoPokemon.description}
+
+                        </li>
+                        <li>
+                        {memoPokemon.description2}
+
+                        </li>
+                        <li>
+                        {memoPokemon.description3}
+
+                        </li>
+                    </ul>
+
                 </AboutTextContainer>
 
             </AboutInfoContainer>

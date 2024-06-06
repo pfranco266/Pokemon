@@ -46,7 +46,7 @@ const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPo
     useEffect(() => {
         fetchData(index);
 
-    }, [])
+    }, [index])
 
     //TYPE FOR LATER
     // memoPokemon.types[0].type.name

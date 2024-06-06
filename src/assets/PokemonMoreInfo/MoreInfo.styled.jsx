@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import colorMap from "../Pokemon/colorMap";
 import { Link } from 'react-router-dom';
-
+import { LuSword } from "react-icons/lu";
+import { PiShieldPlusDuotone } from "react-icons/pi";
+import { LuSwords } from "react-icons/lu";
+import { GiMagicShield } from "react-icons/gi";
+import { MdOutlineSpeed } from "react-icons/md";
+import { GiHealthIncrease } from "react-icons/gi";
 
 export const Heading = styled.header`
 display: flex;
@@ -11,7 +16,6 @@ position: relative;
 border-bottom-left-radius: 40px;
 border-bottom-right-radius: 40px;
 background-color: ${({ type }) => {
-    console.log(type)
     return colorMap[type]?.color
   }};
 `
@@ -145,8 +149,8 @@ export const AboutInfoContainer = styled.section`
 `
 
 export const AboutSVG = styled.img`
-  width: 20em;
-  height: 20em;
+  width: 15em;
+  height: 15em;
 `
 
 export const AboutImgContainer = styled.div`
@@ -162,4 +166,83 @@ export const AboutTextContainer = styled.div`
   border-radius: 20px;
   margin: 1em 2em;
   padding: 3em;
+`
+
+export const StatsGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  background-color: black;
+  border: 1px solid yellow;
+  width: 920px;
+  height: 720px;
+  margin-bottom: 100vh;
+  border-radius: 10px;
+  @media(max-width: 980px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: 720px;
+    height: auto;
+  }
+  @media(max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: 540px;
+    height: auto;
+  }
+`
+
+export const StatsFlexContainer = styled.div`
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 2em;
+  @media(max-width: 980px) {
+    margin: 1.5em;
+
+  }
+  @media(max-width: 768px) {
+    margin: 1em;
+
+  }
+`
+
+export const StatsText = styled.p`
+  font-size: 2em;
+`
+
+
+export const AttackIcon = styled(LuSword)`
+height: 50px;
+width: 50px;
+color: navy;
+`
+
+export const DefenseIcon = styled(PiShieldPlusDuotone)`
+height: 50px;
+width: 50px;
+color: #f1f1f1;
+`
+
+export const HealthIcon = styled(GiHealthIncrease)`
+height: 50px;
+width: 50px;
+color: green;
+`
+
+export const SpeedIcon = styled(MdOutlineSpeed)`
+height: 50px;
+width: 50px;
+color: yellow;
+`
+
+export const SpecialAttackIcon= styled(LuSwords)`
+height: 50px;
+width: 50px;
+color: red;
+`
+
+export const SpecialDefenseIcon= styled(GiMagicShield)`
+height: 50px;
+width: 50px;
+color: grey;
 `

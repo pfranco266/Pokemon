@@ -63,6 +63,10 @@ function pokemonReducer(state, action) {
             backDefault: pokemonDetailData.sprites.back_default,
             frontShiny: pokemonDetailData.sprites.front_shiny,
             backShiny: pokemonDetailData.sprites.back_shiny,
+            showdown: pokemonDetailData.sprites.other.showdown.front_default, 
+            home: pokemonDetailData.sprites.other.home.front_default,
+            
+
           },
           stats: {
             hp: pokemonDetailData.stats[0].base_stat,
@@ -77,7 +81,11 @@ function pokemonReducer(state, action) {
           types: pokemonDetailData.types,
           moves: pokemonDetailData.moves,
           evolutionTree: evolutionData,
-          description: pokemonSpeciesData.flavor_text_entries.slice(0, 5).map(entry => entry.flavor_text),
+          description: pokemonSpeciesData.flavor_text_entries[0].flavor_text,
+          description2: pokemonSpeciesData.flavor_text_entries[2].flavor_text,
+          description3: pokemonSpeciesData.flavor_text_entries[3].flavor_text,
+
+
           error: '',
         };
   
