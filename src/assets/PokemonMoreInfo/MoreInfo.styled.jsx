@@ -25,22 +25,15 @@ display: none;
     transform: rotate(-90deg)
 `
 
-export const EvolutionContainer = styled.div`
-display: flex; 
-justify-content: center;
 
-`
+
 
 export const PokemonTitle = styled.h1`
 text-transform: capitalize;
 font-size: 5em;
 
 `
-export const EvolutionChainSVG = styled.img`
-    width: 5em; 
-    height: 7em;
-   
-`
+
 
 export const HeaderTitleContainer = styled.div`
     display: flex;
@@ -79,6 +72,48 @@ export const BackButton = styled(Link)`
 
 export const BodyContainer = styled.main`
     display: flex;
-
+    justify-content: center;
     height: 100vh;
+`
+
+
+
+export const EvolutionGridContainer = styled.section`
+    width: 80%;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: ${({count}) => {
+    if (count === 3) return 'repeat(3, 1fr)';
+    if (count === 2) return 'repeat(2, 1fr)';
+    return '1fr';
+  }};
+  @media (max-width: 1200px) {
+    color: magenta;
+  }
+
+`
+export const EvolutionName = styled.h2`
+text-transform: capitalize;
+
+`
+
+export const EvolutionItem = styled.div`
+  background-color: blue;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  height: 300px;
+
+
+    
+`;
+export const EvolutionOuterContainer = styled.div`
+
+`
+
+
+export const EvolutionChainSVG = styled.img`
+    width: 5em; 
+    height: 7em;
+   
 `

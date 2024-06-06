@@ -1,21 +1,27 @@
 import React from "react";
-import {EvolutionContainer} from "./MoreInfo.styled"
-
+import {EvolutionChainSVG, EvolutionGridContainer, EvolutionItem, EvolutionName, EvolutionOuterContainer} from "./MoreInfo.styled"
+import SinglePokeCard from "../Collection/SinglePokeCard";
 
 function Evolution({  memoPokemon }) {
 
 
-
+   
 
     return (
-       <EvolutionContainer>
-            {memoPokemon.evolutionTree && 
-            <div>
-                <h3>{memoPokemon?.firstForm?.name}</h3>
-
-            </div>
-            }
-       </EvolutionContainer>
+       <EvolutionGridContainer count={memoPokemon?.evolutions?.length}>
+            {memoPokemon && memoPokemon?.evolutions?.map((poke, index) => {
+                return (
+                    <EvolutionItem key={index}>
+                        <EvolutionName>
+                        <EvolutionChainSVG src={poke.sprite}/>
+                        
+                        {poke.name}
+                        </EvolutionName>
+                    </EvolutionItem>
+                )
+            })}
+         
+       </EvolutionGridContainer>
     )
 }
 
