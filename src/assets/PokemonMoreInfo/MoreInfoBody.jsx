@@ -11,7 +11,7 @@ function MoreInfoBody ({memoPokemon}) {
     return (
         <BodyContainer>
            <FlexColumnContainer>
-                <Title>EVOLUTIONS</Title>
+                <Title>Evolutions</Title>
                 <Evolution memoPokemon={memoPokemon}/>
                 <About memoPokemon={memoPokemon}/>
             </FlexColumnContainer>

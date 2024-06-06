@@ -8,7 +8,7 @@ function About({ memoPokemon }) {
     return (
         <FlexColumnContainer>
             <Title>
-                ABOUT {memoPokemon.name}
+                About {memoPokemon.name}
             </Title>
             <AboutInfoContainer>
                 <AboutImgContainer>
