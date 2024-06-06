@@ -1,6 +1,7 @@
 import React from "react";
 import {EvolutionChainSVG, EvolutionGridContainer, EvolutionItem, EvolutionName, EvolutionOuterContainer} from "./MoreInfo.styled"
 import SinglePokeCard from "../Collection/SinglePokeCard";
+import { BrowseContainer } from "../Collection/Browse.styled";
 
 function Evolution({  memoPokemon }) {
 
@@ -8,20 +9,16 @@ function Evolution({  memoPokemon }) {
    
 
     return (
-       <EvolutionGridContainer count={memoPokemon?.evolutions?.length}>
+       <BrowseContainer count={memoPokemon?.evolutions?.length}>
             {memoPokemon && memoPokemon?.evolutions?.map((poke, index) => {
                 return (
-                    <EvolutionItem key={index}>
-                        <EvolutionName>
-                        <EvolutionChainSVG src={poke.sprite}/>
-                        
-                        {poke.name}
-                        </EvolutionName>
-                    </EvolutionItem>
+                   
+                        <SinglePokeCard index={poke.id}/>
+                 
                 )
             })}
          
-       </EvolutionGridContainer>
+       </BrowseContainer>
     )
 }
 

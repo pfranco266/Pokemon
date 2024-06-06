@@ -7,13 +7,15 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 function MoreInfoHeading({ pokeId, memoPokemon }) {
     console.log(memoPokemon?.types[0]?.type?.name)
 
+
+    console.log('test', pokeId, memoPokemon.name)
     function handleClick () {
         
     }
 
     return (
         <Heading type={memoPokemon?.types[0]?.type?.name}>
-            <BackButton to="/pokemon" onClick={handleClick}>
+            <BackButton to="/pokemon" >
             <IoMdArrowRoundBack />
             </BackButton>
                 <HeaderTitleContainer>

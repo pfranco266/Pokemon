@@ -45,7 +45,7 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
 
     useEffect(()=> {
         fetchData(pokeId);
-    },[])
+    },[memoPokemon])
 
     return (
         <>

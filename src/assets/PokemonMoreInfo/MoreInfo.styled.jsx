@@ -73,25 +73,38 @@ export const BackButton = styled(Link)`
 export const BodyContainer = styled.main`
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 200vh;
 `
 
 
 
 export const EvolutionGridContainer = styled.section`
-    width: 80%;
-    display: grid;
-    gap: 2em;
-    grid-template-columns: ${({count}) => {
+  width: 80%;
+  display: grid;
+  grid-auto-rows: minmax(300px, auto);
+  gap: 2em;
+  justify-content: center; /* Center the grid items horizontally */
+  
+  grid-template-columns: ${({ count }) => {
     if (count === 3) return 'repeat(3, 1fr)';
     if (count === 2) return 'repeat(2, 1fr)';
     return '1fr';
   }};
-  @media (max-width: 1200px) {
+  
+  ${({ count }) =>
+    count === 1 &&
+    `
+    max-width: 500px;
+  `}
+
+  @media (max-width: 1360px) {
     color: magenta;
   }
+`;
 
-`
+
+
+
 export const EvolutionName = styled.h2`
 text-transform: capitalize;
 
@@ -116,4 +129,37 @@ export const EvolutionChainSVG = styled.img`
     width: 5em; 
     height: 7em;
    
+`
+
+export const FlexColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`
+
+export const AboutInfoContainer = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+export const AboutSVG = styled.img`
+  width: 20em;
+  height: 20em;
+`
+
+export const AboutImgContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+export const AboutTextContainer = styled.div`
+  width: 100%;
+  background-color: grey;
+  border: 1px solid yellow;
+  border-radius: 20px;
+  margin: 1em 2em;
+  padding: 3em;
 `

@@ -5,6 +5,7 @@ margin: 1em 0px;
 text-align: center;
 font-size: 2em; 
 color: rgba(255, 255, 255, 0.87);
+text-transform: capitalize;
 `
 
 export const HomeContainer = styled.div`
