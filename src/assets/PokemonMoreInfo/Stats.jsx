@@ -13,7 +13,7 @@ import { StatsGridContainer, StatsFlexContainer, StatsText, AttackIcon, DefenseI
 function Stats({ memoPokemon }) {
     return (
         <FlexColumnContainer>
-            <Title>{memoPokemon.name}'s Stats</Title>
+            <Title>{memoPokemon.name} Stats</Title>
             <StatsGridContainer>
                 <StatsFlexContainer>
                     <StatsText>HP</StatsText>

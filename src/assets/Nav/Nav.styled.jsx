@@ -11,6 +11,7 @@ color: #fff; /* White text */
 box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
 display: flex;
 justify-content: space-evenly;
+border-bottom: 2px solid yellow;
 `
 
 export const NavBar = styled.nav`

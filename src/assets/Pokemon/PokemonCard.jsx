@@ -61,7 +61,7 @@ function PokemonCard({ index }) {
           <Name>{memoizedPokemonDetails.name}</Name>
           <HitPoints>HP: {memoizedPokemonDetails.stats.hp}</HitPoints>
           <SpriteContainer backgroundType={memoizedPokemonDetails.types?.[0]?.type?.name}>
-            <Sprite src={memoizedPokemonDetails.sprites.default}></Sprite>
+            <Sprite src={memoizedPokemonDetails?.sprites[0]?.picture}></Sprite>
           </SpriteContainer>
           <InfoContainer>
             {memoizedPokemonDetails.types.map((type, index) => (

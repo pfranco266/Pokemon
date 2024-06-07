@@ -32,8 +32,10 @@ function pokemonReducer(state, action) {
     switch (action.type) {
       case 'setPokemonDetails':
         const { pokemonDetailData, pokemonSpeciesData, evolutionData } = action.payload;
-        
         // Extract evolution chain
+
+        console.log(pokemonDetailData.sprites)
+
         const extractEvolutions = (chain) => {
           const evolutions = [];
           let current = chain;
@@ -58,16 +60,48 @@ function pokemonReducer(state, action) {
           name: pokemonDetailData.name,
           height: pokemonDetailData.height / 10,
           weight: pokemonDetailData.weight,
-          sprites: {
-            default: pokemonDetailData.sprites.front_default,
-            backDefault: pokemonDetailData.sprites.back_default,
-            frontShiny: pokemonDetailData.sprites.front_shiny,
-            backShiny: pokemonDetailData.sprites.back_shiny,
-            showdown: pokemonDetailData.sprites.other.showdown.front_default, 
-            home: pokemonDetailData.sprites.other.home.front_default,
-            
-
-          },
+          sprites : [
+            {
+              description: 'Front Default',
+              picture: pokemonDetailData.sprites?.front_default
+            }, 
+            {
+              description: 'Back Default',
+              picture: pokemonDetailData.sprites?.back_default
+            }, 
+            {
+              description: 'Front Shiny Default',
+              picture: pokemonDetailData.sprites?.front_shiny
+            }, 
+            {
+              description: 'Back Shiny Default',
+              picture: pokemonDetailData.sprites?.back_shiny
+            },
+            {
+              description: 'Showdown', 
+              picture: pokemonDetailData.sprites?.other?.showdown?.front_default, 
+            }, 
+            {
+              description: 'Scroll Sprites Through Generations', 
+              picture: pokemonDetailData.sprites?.other?.home?.front_default, 
+            }, 
+            {
+              description: 'Generation 1',
+              picture: pokemonDetailData.sprites?.versions?.["generation-i"]?.["red-blue"]?.front_default || pokemonDetailData.sprites?.other?.home?.front_default,
+            },
+            {
+              description: 'Generation 2',
+              picture: pokemonDetailData.sprites?.versions?.["generation-ii"]?.gold?.front_default
+            },
+            {
+              description: 'Generation 3',
+              picture: pokemonDetailData.sprites?.versions?.["generation-iii"]?.emerald?.front_default
+            },
+            {
+              description: 'Generation 8',
+              picture: pokemonDetailData.sprites?.versions?.["generation-viii"]?.icons?.front_default
+            }
+          ],
           stats: {
             hp: pokemonDetailData.stats[0].base_stat,
             attack: pokemonDetailData.stats[1].base_stat,
@@ -104,10 +138,6 @@ function pokemonReducer(state, action) {
 
 export {initialPokeDetails, pokemonReducer};
 
-
-
-
-// pokemonDetailData gives 
 
 
 
