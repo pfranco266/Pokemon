@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import colorMap from "../Pokemon/colorMap";
 import { Link } from 'react-router-dom';
 import { LuSword } from "react-icons/lu";
@@ -8,13 +7,14 @@ import { GiMagicShield } from "react-icons/gi";
 import { MdOutlineSpeed } from "react-icons/md";
 import { GiHealthIncrease } from "react-icons/gi";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import keyframes from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 
 export const Heading = styled.header`
 display: flex;
 justify-content: space-evenly;
 height: 50vh;
+
 position: relative;
 border-bottom-left-radius: 40px;
 border-bottom-right-radius: 40px;
@@ -50,6 +50,7 @@ font-size: 5em;
 
 
 export const HeaderTitleContainer = styled.div`
+position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -364,31 +365,130 @@ export const AbilitiesFlexContainer = styled.div`
   }
 `
 
-
-const twinkleEffect = styled(keyframes)`
-{
-  0%, 100% {
-      opacity: 0.3;
-      transform: scale(1);
+const shine = keyframes`
+  0% {
+    background-position: -200px;
   }
-  50% {
-      opacity: 1;
-      transform: scale(1.05);
+  100% {
+    background-position: 200px;
   }
-}
-`
+`;
 
-export const Twinkle = styled.div`
+
+export const MythicalBanner = styled.h1`
+  position: absolute;
+  top: 45%;
+  left: 1%;
+  font-size: 2.5em;
+  color: ${({ type }) => colorMap[type]?.color};
+  background: linear-gradient(
+    to right,
+    ${({ type }) => colorMap[type]?.color} 0%,
+    black 10%,
+    ${({ type }) => colorMap[type]?.color} 20%
+  );
+  background-size: 400px 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ${shine} 3s infinite linear;
+  -webkit-text-size-adjust: none;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+  @media(max-width: 900px) {
+    font-size: 2em;
+  
+  }
+`;
+
+export const LegendaryBanner = styled.h2`
 position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-background: transparent;
-animation: ${twinkleEffect} 1.5s infinite;
+top: 45%;
+left: 1%;
+font-size: 2.5em;
+color: ${({ type }) => colorMap[type]?.color};
+background: linear-gradient(
+  to right,
+  ${({ type }) => colorMap[type]?.color} 0%,
+  white 10%,
+  ${({ type }) => colorMap[type]?.color} 20%
+);
+background-size: 400px 100%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: ${shine} 3s infinite linear;
+-webkit-text-size-adjust: none;
+font-weight: 900;
+text-decoration: none;
+white-space: nowrap;
+@media(max-width: 900px) {
+  font-size: 2em;
+
+}
+    
 `
 
-export const TwinkleContainer = styled.div`
 
-`
+
+
+
+
+
+
+
+// export const Mythical = styled.div`
+// position: relative;
+// width: auto; 
+// height: auto;
+
+// `;
+
+// export const MythicalBanner = styled.h1`
+//   position: absolute;
+//   top: 25%;
+//   left: 100%;
+//   color: ${({ type }) => colorMap[type]?.color};
+//   background: linear-gradient(
+//     to right,
+//     ${({ type }) => colorMap[type]?.color} 0%,
+//     white 10%,
+//     ${({ type }) => colorMap[type]?.color} 20%
+//   );
+//   background-size: 400px 100%;
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+//   animation: ${shine} 3s infinite linear;
+//   -webkit-text-size-adjust: none;
+//   font-weight: 900;
+//   text-decoration: none;
+//   white-space: nowrap;
+// `;
+
+// export const LegendaryBanner = styled(MythicalBanner)`
+    
+//     );
+// `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

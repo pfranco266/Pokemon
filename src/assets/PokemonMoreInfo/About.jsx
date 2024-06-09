@@ -8,6 +8,9 @@ import { Title } from "../Home/Home.styled";
 function About({ memoPokemon }) {
     const [pictureNumber, setPictureNumber] = useState(5)
 
+
+
+
     function handleNext() {
         if(pictureNumber < memoPokemon.sprites.length -1) {
             // console.log( memoPokemon.sprites)
