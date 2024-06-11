@@ -173,7 +173,8 @@ export const PokemonDescriptionContainer = styled.div`
 `
 
 export const PokemonDescription = styled.p`
-font-size: 8px;
+font-size: 9px;
+padding: 5px 0;
 
 `
 
@@ -232,17 +233,15 @@ export const GenerationContainer = styled.span`
 
 export const ResistanceDescription = styled.p`
   height: auto;
-  font-size: 6px;
+  font-size: 10px;
+  padding-bottom: 5px;
 `
 
-export const WeaknessDescription = styled.p`
-height: auto;
-font-size: 6px;
-`
+
 
 export const GenerationDescription = styled.p`
 height: auto;
-font-size: 6px;
+font-size: 20px;
 `
 
 

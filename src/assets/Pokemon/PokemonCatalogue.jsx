@@ -6,7 +6,7 @@ import Pokemon from "../Pokemon/Pokemon"
 function PokemonCatalogFC () {
     return (
         <HomeContainer>
-            <Title>Catalog of Pokemon</Title>
+            <Title>Catalog of Pokemon Cards</Title>
             <PokemonCatalog>
                 <Pokemon/>
             </PokemonCatalog>

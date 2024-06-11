@@ -34,7 +34,7 @@ function pokemonReducer(state, action) {
         const { pokemonDetailData, pokemonSpeciesData, evolutionData } = action.payload;
         // Extract evolution chain
 
-
+      console.log(pokemonDetailData.sprites)
         const extractEvolutions = (chain) => {
           const evolutions = [];
           let current = chain;
@@ -59,48 +59,65 @@ function pokemonReducer(state, action) {
           name: pokemonDetailData.name,
           height: pokemonDetailData.height / 10,
           weight: pokemonDetailData.weight,
-          sprites : [
-            {
-              description: 'Front Default',
-              picture: pokemonDetailData.sprites?.front_default
-            }, 
-            {
-              description: 'Back Default',
-              picture: pokemonDetailData.sprites?.back_default
-            }, 
-            {
-              description: 'Front Shiny Default',
-              picture: pokemonDetailData.sprites?.front_shiny
-            }, 
-            {
-              description: 'Back Shiny Default',
-              picture: pokemonDetailData.sprites?.back_shiny
-            },
-            {
-              description: 'Showdown', 
-              picture: pokemonDetailData.sprites?.other?.showdown?.front_default, 
-            }, 
-            {
-              description: 'Scroll Sprites Through Generations', 
-              picture: pokemonDetailData.sprites?.other?.home?.front_default, 
-            }, 
-            {
-              description: 'Generation 1',
-              picture: pokemonDetailData.sprites?.versions?.["generation-i"]?.["red-blue"]?.front_default || pokemonDetailData.sprites?.other?.home?.front_default,
-            },
-            {
-              description: 'Generation 2',
-              picture: pokemonDetailData.sprites?.versions?.["generation-ii"]?.gold?.front_default
-            },
-            {
-              description: 'Generation 3',
-              picture: pokemonDetailData.sprites?.versions?.["generation-iii"]?.emerald?.front_default
-            },
-            {
-              description: 'Generation 8',
-              picture: pokemonDetailData.sprites?.versions?.["generation-viii"]?.icons?.front_default
-            }
-          ],
+        
+const sprites = [
+  {
+    description: 'Front Default',
+    picture: pokemonDetailData.sprites?.front_default || defaultImage
+  },
+  {
+    description: 'Back Default',
+    picture: pokemonDetailData.sprites?.back_default || defaultImage
+  },
+  {
+    description: 'Front Shiny Default',
+    picture: pokemonDetailData.sprites?.front_shiny || defaultImage
+  },
+  {
+    description: 'Back Shiny Default',
+    picture: pokemonDetailData.sprites?.back_shiny || defaultImage
+  },
+  {
+    description: 'Showdown',
+    picture: pokemonDetailData.sprites?.other?.showdown?.front_default || defaultImage
+  },
+  {
+    description: 'Scroll Sprites Through Generations',
+    picture: pokemonDetailData.sprites?.other?.home?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 1',
+    picture: pokemonDetailData.sprites?.versions?.["generation-i"]?.["red-blue"]?.front_default || pokemonDetailData.sprites?.other?.home?.front_default || defaultImage,
+  },
+  {
+    description: 'Generation 2',
+    picture: pokemonDetailData.sprites?.versions?.["generation-ii"]?.gold?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 3',
+    picture: pokemonDetailData.sprites?.versions?.["generation-iii"]?.emerald?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 4',
+    picture: pokemonDetailData.sprites?.versions?.["generation-iv"]?.["diamond-pearl"]?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 5',
+    picture: pokemonDetailData.sprites?.versions?.["generation-v"]?.["black-white"]?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 6',
+    picture: pokemonDetailData.sprites?.versions?.["generation-vi"]?.["omegaruby-alphasapphire"]?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 7',
+    picture: pokemonDetailData.sprites?.versions?.["generation-vii"]?.["ultra-sun-ultra-moon"]?.front_default || defaultImage
+  },
+  {
+    description: 'Generation 8',
+    picture: pokemonDetailData.sprites?.versions?.["generation-viii"]?.icons?.front_default || defaultImage
+  }
+],
           stats: {
             hp: pokemonDetailData.stats[0].base_stat,
             attack: pokemonDetailData.stats[1].base_stat,

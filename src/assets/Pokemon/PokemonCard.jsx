@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useReducer } from "react";
-import { ResistanceDescription, WeaknessDescription, GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
+import { ResistanceDescription,  GenerationDescription, IndividualPokeContainer, PokeType, PokeHeightWeight, GenerationContainer, WeaknessContainer, ElementContainer, ResistanceContainer, PokemonMoveContainer, PokemonDescriptionContainer, PokemonDescription, InfoContainer, HitPoints, Name, SpriteContainer, Sprite } from "./Pokemon.styled";
 import PreviousPokemon from "./PreviousPokemon";
 import PokemonWeak from "./PokemonWeak"
 import { pokemonReducer, initialPokeDetails } from "../Reducers/pokemonReducer";
@@ -72,7 +72,7 @@ function PokemonCard({ index }) {
           </InfoContainer>
           <PokemonDescriptionContainer>
             <PokemonDescription>
-              {memoizedPokemonDetails.description[randomDescription]}
+              {memoizedPokemonDetails.description2}
             </PokemonDescription>
           </PokemonDescriptionContainer>
           <PokemonMoveContainer>
@@ -85,7 +85,7 @@ function PokemonCard({ index }) {
           </PokemonMoveContainer>
           <ElementContainer>
             <WeaknessContainer>
-              <WeaknessDescription>Weaknesses</WeaknessDescription>
+              <ResistanceDescription>Weaknesses</ResistanceDescription>
               <PokemonWeak type1={memoizedPokemonDetails?.types[0]?.type.name} type2={memoizedPokemonDetails?.types[0]?.type?.name} resist={false} weak={true} />
             </WeaknessContainer>
             <ResistanceContainer>
@@ -94,7 +94,7 @@ function PokemonCard({ index }) {
             </ResistanceContainer>
             <GenerationContainer>
               <ResistanceDescription>Generation</ResistanceDescription>
-              <GenerationDescription>{memoizedPokemonDetails.id <= 151 ? '1' : '2'}</GenerationDescription>
+              <GenerationDescription>{memoizedPokemonDetails.id <= 151 ? 'I' : 'II'}</GenerationDescription>
             </GenerationContainer>
           </ElementContainer>
         </IndividualPokeContainer>

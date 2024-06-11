@@ -145,8 +145,14 @@ function Pokemon() {
 
             </PokemonGridContainer>
 
-            {!pokeList.loading && pokeList.list.length < 151. && <LoadMore disabled={disableButton} onClick={handleLoadMore}>Load more Pokemon</LoadMore>}
-            {disableButton ? <p>I only like the first 250ish pokemon </p> : null}
+            {!pokeList.loading && pokeList?.list.length < 251 && 
+               <LoadMore disabled={disableButton} onClick={handleLoadMore}>
+               Load more Pokemon
+             </LoadMore>
+            
+             }
+
+             {pokeList?.list.length > 251 ? <h1>I only like the first 250ish Pokemon</h1> : null}
         </PokeContainer>
     );
 }
