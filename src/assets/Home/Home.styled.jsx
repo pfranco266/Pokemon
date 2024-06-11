@@ -30,3 +30,7 @@ export const TextContainer = styled.div`
     height: 60%;
     margin: auto;
 `
+export const Pokemonlogo = styled.img`
+    width: 8em; 
+    height: 8em;
+`

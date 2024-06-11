@@ -1,12 +1,25 @@
 import React from "react";
+import { SearchInput } from "./Search.styled"
 
 
-function Search () {
+function Search({ searchTerm, handleChange, handleSubmit }) {
+
+
+
+
     return (
-        <>  
-            <Title>Search Pokemon</Title>
-            <Input />
-        </>
+
+
+        <form onSubmit={handleSubmit}>
+            <SearchInput
+                type="text"
+                placeholder="Search for Pokémon..."
+                value={searchTerm}
+                onChange={handleChange}
+            />
+
+
+        </form>
     )
 }
 

@@ -34,7 +34,6 @@ function pokemonReducer(state, action) {
         const { pokemonDetailData, pokemonSpeciesData, evolutionData } = action.payload;
         // Extract evolution chain
 
-      console.log(pokemonDetailData.sprites)
         const extractEvolutions = (chain) => {
           const evolutions = [];
           let current = chain;

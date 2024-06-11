@@ -50,28 +50,7 @@ function Pokemon() {
         });
     };
 
-    // async function fetchPokeList(url) {
-    //     try {
-    //         const response = await fetch(url);  ///   https://pokeapi.co/api/v2/pokemon/
-    //         const data = await response.json();
-
-
-    //         // console.log('Pokemon.jsx', data)
-    //         setPokeList(prev => ({
-    //             ...prev,
-    //             loading: false,
-    //             list: [...prev.list, ...data.results], 
-    //             nextUrl: data.next, // Update the next URL
-    //         }));
-    //     } catch (error) {
-    //         setPokeList(prev => ({
-    //             ...prev,
-    //             loading: false,
-    //             error: error.message
-    //         }));
-    //     }
-    // }   
-
+ 
 
     const fetchData = async (url) => {
         dispatch({ type: 'setLoading' });
@@ -118,12 +97,15 @@ function Pokemon() {
 
     };
 
+    
+
     return (
         <PokeContainer>
 
             {pokeList.loading && <h1>Loading, please wait....</h1>}
             {pokeList.error && <h4>Error: {pokeList.error}</h4>}
             <PokemonGridContainer>
+                
                 {pokeList.list && pokeList.list.length > 0 && (
                     pokeList.list.map((poke, index) => (
                         <GridItems key={index}>

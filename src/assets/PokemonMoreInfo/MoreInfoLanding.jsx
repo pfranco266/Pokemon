@@ -8,7 +8,9 @@ import MoreInfoBody from "./MoreInfoBody"
 
 function MoreInfoLanding () {
     const params = useParams();
-    const pokeId = Number(params?.id); 
+    const pokeId = params?.id; 
+    console.log('landers', params, pokeId)
+
     const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPokeDetails);
 
 
@@ -52,7 +54,7 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
     return (
         <>
       
-        <MoreInfoHeading memoPokemon={memoPokemon} pokeId={pokeId}/>
+        <MoreInfoHeading memoPokemon={memoPokemon} />
         <MoreInfoBody memoPokemon={memoPokemon}/>
         
         </>

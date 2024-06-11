@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, CartIcon, NavContainer, NavBar } from "./Nav.styled";
+import { Link, CartIcon, NavContainer, NavBar} from "./Nav.styled";
 
 
 
@@ -11,7 +11,8 @@ function Nav() {
         <NavContainer>
             <NavBar>
                 <Link aria-label="Home" to='/'>Home </Link>
-                <Link aria-label="Browse Pokemon" to="/pokemon">Pokemon</Link>
+                <Link aria-label="Browse Pokemon" to="/pokemon">Pokemon
+                </Link>
 
                 <Link aria-label="Pokemon Cards" to="/pokemoncards">Pokemon Cards</Link>
 

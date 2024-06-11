@@ -33,7 +33,7 @@ useEffect(() => {
 
                     
                 <PokeNumber>
-                    #{pokeId}
+                    #{memoPokemon.id}
                 </PokeNumber>
 
                 <PokemonTitle>
@@ -44,7 +44,7 @@ useEffect(() => {
             </HeaderTitleContainer>
   
            
-                <LandingSVG src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeId}.svg`} alt={memoPokemon.name} />
+                <LandingSVG src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${memoPokemon.id}.svg`} alt={memoPokemon.name} />
 
       
 

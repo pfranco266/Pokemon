@@ -9,9 +9,9 @@ import Home from "./assets/Home/Home"
 import Nav from "./assets/Nav/Nav"
 import Cart from './assets/Cart/Cart';
 import PokemonCatalogFC from './assets/Pokemon/PokemonCatalogue';
-import BrowsePokemon from "./assets/Collection/BrowsePokemon"
-import MoreInfoLanding from "./assets/PokemonMoreInfo/MoreInfoLanding"
 
+import MoreInfoLanding from "./assets/PokemonMoreInfo/MoreInfoLanding"
+import BrowseLanding from './assets/Collection/BrowseLanding';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -21,7 +21,7 @@ function App() {
               <Nav/>
               <Routes>
                   <Route path="/" element={<Home />}/>
-                  <Route path="/pokemon" element={<BrowsePokemon />}/>
+                  <Route path="/pokemon" element={<BrowseLanding />}/>
 
                   <Route path="/pokemoncards" element={<PokemonCatalogFC />}/>
                   <Route path="/cart" element={<Cart />}/>
