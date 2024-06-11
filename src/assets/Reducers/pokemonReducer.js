@@ -60,7 +60,7 @@ function pokemonReducer(state, action) {
           height: pokemonDetailData.height / 10,
           weight: pokemonDetailData.weight,
         
-const sprites = [
+sprites : [
   {
     description: 'Front Default',
     picture: pokemonDetailData.sprites?.front_default || defaultImage
