@@ -14,6 +14,12 @@ function MoreInfoLanding () {
     const pokeId = Number(params?.id); 
     const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPokeDetails);
 
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [pokeId]);
+
+    
     async function fetchData (pokeId) {
         setPokemonDetails({
             type: 'setLoading', 

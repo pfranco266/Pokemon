@@ -56,3 +56,4 @@ useEffect(() => {
     )
 }
 export default MoreInfoHeading;
+
