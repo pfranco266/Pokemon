@@ -4,15 +4,16 @@ import { pokemonReducer, initialPokeDetails } from "../Reducers/pokemonReducer";
 import { fetchSinglePokemon, fetchEvolutionData } from "../Reducers/pokeAPI";
 import MoreInfoHeading from "./MoreInfoHeading";
 import MoreInfoBody from "./MoreInfoBody"
-
+import { HomeContainer } from "../Home/Home.styled";
+import { Link } from "react-router-dom";
 
 function MoreInfoLanding () {
     const params = useParams();
     const pokeId = params?.id; 
-    console.log('landers', params, pokeId)
 
     const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPokeDetails);
 
+    console.log(pokemonDetails)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -53,9 +54,25 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
 
     return (
         <>
-      
+        {memoPokemon.loading && <h4>Loading... Please wait</h4>}
+        
+
+        {!memoPokemon?.id ? <HomeContainer>
+            <h2>
+            Sorry, we couldn't find {pokeId}. Try your search again
+            </h2>
+            <Link to="/pokemon">
+            <h2>
+            Back to all Pokemon
+            </h2>
+            </Link>
+        </HomeContainer> : 
+        <>
         <MoreInfoHeading memoPokemon={memoPokemon} />
         <MoreInfoBody memoPokemon={memoPokemon}/>
+        </>
+        }
+        
         
         </>
     )

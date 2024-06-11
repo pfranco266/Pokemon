@@ -24,7 +24,9 @@ const initialPokeDetails = {
     moves: [],
     evolutionTree: {},
     description: [],
+    loading: true,
     error: null
+
 
 };
 
@@ -53,6 +55,7 @@ function pokemonReducer(state, action) {
         return {
           ...state,
           id: pokemonDetailData.id,
+          loading: false,
           legendary: pokemonSpeciesData.is_legendary,
           mythical: pokemonSpeciesData.is_mythical,
           name: pokemonDetailData.name,
@@ -141,11 +144,15 @@ sprites : [
       case 'setError':
         return {
           ...state,
+          loading: false,
           error: action.payload,
         };
   
       default:
-        return state;
+        return {
+          ...state, 
+          loading: false
+        };
     }
   }
   
