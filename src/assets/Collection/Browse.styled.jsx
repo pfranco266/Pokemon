@@ -35,7 +35,9 @@ export const BrowseContainer = styled.div`
   grid-auto-rows: minmax(300px, auto); 
   justify-content: center; 
   margin-bottom: 5rem;
-  @media(min-width: 400px) {
+  @media(min-width: 360px) {
+    grid-template-columns: repeat(1, 350px);
+
     gap: 75px;
   }
   @media(min-width: 700px) {

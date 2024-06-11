@@ -8,6 +8,7 @@ import { MdOutlineSpeed } from "react-icons/md";
 import { GiHealthIncrease } from "react-icons/gi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styled, { keyframes } from 'styled-components';
+ 
 
 
 export const Heading = styled.header`
@@ -42,6 +43,10 @@ display: none;
 export const PokemonTitle = styled.h1`
 text-transform: capitalize;
 font-size: 5em;
+
+@media(max-width: 600px) {
+  padding-left: 15px;
+}
 @media(max-width: 1068px) {
   font-size: 3em
 }
@@ -55,19 +60,32 @@ position: relative;
     flex-direction: column;
     justify-content: space-between;
     padding: 2em 0;
+    @media(max-width: 900px){
+      justify-content: space-evenly;
+    }
 `
 
 export const LandingSVG = styled.img`
 transform: scaleX(-1);
   padding: 2em 0;
-    @media(max-width: 950px) {
-      height: 18em;
-      width: 18em;
+  
+  @media(max-width: 950px) {
+    height: 18em;
+    width: 18em;
+  }
+    @media(max-width: 867px) {
+      height: 16em;
+      width: 16em;
     }
     @media(max-width: 768px) {
       height: 12em;
       width: 12em;
     }
+    @media(max-width: 768px) {
+      height: 8em;
+      width: 8em;
+    }
+    
 `
 
 
@@ -75,6 +93,10 @@ export const PokeNumber = styled.span`
 font-size: 3em;
 opacity: .7;
 font-weight: bold;
+
+@media(max-width: 600px) {
+  padding-left: 15px;
+}
 `
 
 export const BackButton = styled(Link)`
@@ -97,32 +119,39 @@ export const BodyContainer = styled.main`
     margin-bottom: 3em;
 `
 
-
-
-export const EvolutionGridContainer = styled.section`
-  width: 80%;
+export const EvolutionGridContainer = styled.div`
   display: grid;
-  grid-auto-rows: minmax(300px, auto);
-  gap: 2em;
-  height: auto;
-  justify-content: center; /* Center the grid items horizontally */
-  
-  grid-template-columns: ${({ count }) => {
-    if (count === 3) return 'repeat(3, 1fr)';
-    if (count === 2) return 'repeat(2, 1fr)';
-    return '1fr';
-  }};
-  
-  ${({ count }) =>
-    count === 1 &&
-    `
-    max-width: 500px;
-  `}
+  grid-template-columns: repeat(1, 400px);
+  grid-auto-rows: minmax(300px, auto); 
+  justify-content: space-evenly; 
+  margin-bottom: 5rem;
+  @media(min-width: 400px) {
+    gap: 75px;
+  }
+  @media(min-width: 900px) {
+    grid-template-columns: repeat(2, 400px);
+    gap: 75px;
+  }
 
-  @media (max-width: 1360px) {
-    color: magenta;
+  @media(min-width: 1000px) {
+
+  }
+
+  @media(min-width: 1350px) {
+    grid-template-columns: ${({ count }) => {
+      if (count === 3) return 'repeat(3, 400px)';
+      if (count === 2) return 'repeat(2, 400px)';
+      return '400px';
+    }};
+    
+    ${({ count }) =>
+      count === 1 &&
+      `
+      max-width: 500px;
+    `}
   }
 `;
+
 
 
 
@@ -159,6 +188,7 @@ export const FlexColumnContainer = styled.div`
   width: 100%;
   align-items: center;
   margin-bottom: 5rem;
+  justify-content: center;
 `
 
 export const AboutInfoContainer = styled.section`
