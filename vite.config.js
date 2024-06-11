@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/Pokemon/', // Ensure this matches your GitHub Pages URL path
+  base: '/Pokemon/', // bring em straight to the pokemon
   plugins: [react()],
 });
 
