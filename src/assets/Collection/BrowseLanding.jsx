@@ -13,7 +13,8 @@ function BrowseLanding () {
     const [searchTerm, setSearchTerm] = useState('')
 
     function handleChange(event) {
-        setSearchTerm(event.target.value);
+
+        setSearchTerm(event.target.value.toLowerCase());
       }
 
     
@@ -23,12 +24,10 @@ function BrowseLanding () {
 
             
         console.log(searchTerm, event)
+
         navigate(`/pokemon/${searchTerm}`);
 
-
-
       }
-
 
 
     return (
