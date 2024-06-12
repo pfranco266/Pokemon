@@ -4,7 +4,6 @@ import { LoadMore } from "../Pokemon/Pokemon.styled";
 import {fetchPokeList} from "../Reducers/pokeAPI";
 import {pokeListReducer, initialPokeList} from "../Reducers/pokemonListReducer"
 import SinglePokeCard from "./SinglePokeCard"
-import Search from "../Search/Search";
 
 
 function BrowsePokemon() {

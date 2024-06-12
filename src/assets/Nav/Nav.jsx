@@ -10,11 +10,11 @@ function Nav() {
     return (
         <NavContainer>
             <NavBar>
-                <Link aria-label="Home" to='/'>Home </Link>
-                <Link aria-label="Browse Pokemon" to="/pokemon">Pokemon
+                <Link aria-label="Home" to='/pokemon'>Home </Link>
+                <Link aria-label="Browse Pokemon" to="/pokemon/collection">Pokemon
                 </Link>
 
-                <Link aria-label="Pokemon Cards" to="/pokemoncards">Pokemon Cards</Link>
+                <Link aria-label="Pokemon Cards" to="/pokemon/pokemoncards">Pokemon Cards</Link>
 
                 <Link aria-label="Cart" to="/cart">
                     <CartIcon />

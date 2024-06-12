@@ -8,12 +8,6 @@ import { MdOutlineSpeed } from "react-icons/md";
 import { GiHealthIncrease } from "react-icons/gi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styled, { keyframes } from 'styled-components';
- 
-
-
-
-
-
 
 
 
