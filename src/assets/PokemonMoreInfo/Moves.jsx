@@ -23,9 +23,9 @@ return (
             {learnedMoves && learnedMoves.map((move, index) => {
                 return (
                     <AbilitiesFlexContainer key={index}>
-                         <StatsText>{move.name}</StatsText> 
-                         at level
-                        <StatsText> {move.level}</StatsText>
+                         <StatsText><b>{move.name}</b></StatsText> 
+                         <i> <small> at level</small></i>
+                        <StatsText><b>{move.level}</b> </StatsText>
                     </AbilitiesFlexContainer>
                 )
             })}

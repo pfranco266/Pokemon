@@ -213,7 +213,7 @@ export const PrevButton = styled(IoMdArrowRoundBack)`
   font-weight: bold;
   position: absolute;
   top: 50%;
-  left: 10%;
+  left: 8%;
   z-index: 10;
   cursor: pointer;
 `;
@@ -227,7 +227,7 @@ export const NextButton = styled(IoMdArrowRoundBack)`
   font-weight: bold;
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 8%;
   z-index: 10;
   cursor: pointer;
   transform: rotateY(180deg); /* Flip the image horizontally */
@@ -283,9 +283,10 @@ export const StatsGridContainer = styled.div`
 
   @media(max-width: 540px) {
     grid-template-columns: repeat(2, 1fr);
-    width: 450px;
+    width: 400px;
     height: auto;
   }
+
 `
 
 export const StatsFlexContainer = styled.div`
@@ -302,6 +303,10 @@ export const StatsFlexContainer = styled.div`
     margin: 1em;
 
   }
+  @media(max-width: 540px) {
+    margin: .5em;
+    height: auto;
+  }
   
 `
 
@@ -311,6 +316,9 @@ export const StatsText = styled.p`
     font-size: 1.5em;
 
   }
+  @media(max-width: 540px) {
+   font-size: 1em;
+  }
 `
 
 
@@ -318,6 +326,10 @@ export const AttackIcon = styled(LuSword)`
 height: 50px;
 width: 50px;
 color: navy;
+@media(max-width: 540px) {
+  height: 30px;
+  width: 30px;
+}
 `
 
 export const DefenseIcon = styled(PiShieldPlusDuotone)`
@@ -373,7 +385,7 @@ export const AbilitiesGridContainer = styled.div`
   }
   @media(max-width: 540px) {
     grid-template-columns: repeat(2, 1fr);
-    width: 450px;
+    width: 400px;
     height: auto;
   }
 `
