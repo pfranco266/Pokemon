@@ -25,10 +25,6 @@ display: none;
 `
 
 
-
-
-
-
 export const Heading = styled.header`
   height: 50vh;
   width: 100%;
@@ -129,11 +125,16 @@ export const PokeNumber = styled.span`
 export const LandingSVG = styled.img`
   transform: scaleX(-1);
   padding: 2em 0;
-  align-self: flex-end; 
+  align-self: flex-end;
+
+  @media (min-width: 1500px) {
+    height: 18em;
+    width: 18em;
+  }
 
   @media (max-width: 1068px) {
-    height: 16em;
-    width: 16em;
+    height: 14em;
+    width: 14em;
   }
 
   @media (max-width: 950px) {
@@ -142,25 +143,20 @@ export const LandingSVG = styled.img`
   }
 
   @media (max-width: 768px) {
-    height: 12em;
-    width: 12em;
-  }
-
-  @media (min-width: 400px) {
+    /* For devices less than 768px */
     height: 10em;
     width: 10em;
-    align-self: center; 
-
   }
+
   @media (max-width: 400px) {
     height: 8em;
     width: 8em;
-    align-self: center; 
+    align-self: center;
     padding: 0;
-
   }
-
 `;
+
+
 
 export const BackButton = styled(Link)`
     font-size: 2em;
