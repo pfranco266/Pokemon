@@ -51,8 +51,8 @@ export const Heading = styled.header`
 
 export const HeadingContainer = styled.div`
   display: flex;
-  justify-content: space-evenly; 
-  align-items: flex-end; /* Align items at the bottom */
+  justify-content: space-between; 
+  align-items: flex-end; 
   position: relative;
   height: 100%;
 `;
