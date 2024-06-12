@@ -23,9 +23,9 @@ function BrowseLanding () {
       function handleSubmit(event) {
 
             
-        console.log(searchTerm, event)
+        console.log('this new', searchTerm, event)
 
-        navigate(`/pokemon/collection/${searchTerm}`);
+        navigate(`/collection/${searchTerm}`);
 
       }
 

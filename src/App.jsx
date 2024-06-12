@@ -20,12 +20,12 @@ function App() {
             <CartProvider>  
               <Nav/>
               <Routes>
-                  <Route path="/pokemon" element={<Home />}/>
-                  <Route path="/pokemon/collection" element={<BrowseLanding />}/>
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/collection" element={<BrowseLanding />}/>
 
-                  <Route path="/pokemon/pokemoncards" element={<PokemonCatalogFC />}/>
+                  <Route path="/pokemoncards" element={<PokemonCatalogFC />}/>
                   <Route path="/cart" element={<Cart />}/>
-                  <Route path="/pokemon/collection/:id" element={<MoreInfoLanding/>}/>
+                  <Route path="/collection/:id" element={<MoreInfoLanding/>}/>
               </Routes>
             </CartProvider>
 
