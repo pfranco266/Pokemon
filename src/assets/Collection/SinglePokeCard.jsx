@@ -58,7 +58,7 @@ const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPo
 
     return (
         
-        <SinglePokemonContainer to={`/pokemon/collection/${memoPokemon?.id}`} type={memoPokemon?.types[0]?.type?.name}>
+        <SinglePokemonContainer to={`/collection/${memoPokemon?.id}`} type={memoPokemon?.types[0]?.type?.name}>
            <PokemonIndex> #{index}</PokemonIndex> <PokemonName> {memoPokemon.name}</PokemonName>
 
            
