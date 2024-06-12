@@ -25,7 +25,7 @@ function BrowseLanding () {
             
         console.log(searchTerm, event)
 
-        navigate(`/pokemon/${searchTerm}`);
+        navigate(`/pokemon/collection/${searchTerm}`);
 
       }
 
