@@ -1,7 +1,7 @@
 
 import './App.css'
 import { Container } from './App.styled'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import React, { useState } from 'react';
 import { CartProvider } from './CartContext';  // Adjust the path based on your structure
 
@@ -18,6 +18,8 @@ function App() {
   return (
         <Container >
             <CartProvider>  
+           
+
               <Nav/>
               <Routes>
                   <Route path="/" element={<Home />}/>
@@ -27,6 +29,7 @@ function App() {
                   <Route path="/cart" element={<Cart />}/>
                   <Route path="/collection/:id" element={<MoreInfoLanding/>}/>
               </Routes>
+
             </CartProvider>
 
         </Container>
