@@ -108,6 +108,7 @@ export const SinglePokemonContainer = styled(Link)`
   }
 
 
+
 `
 
 // export const PokemonName = styled.h1`

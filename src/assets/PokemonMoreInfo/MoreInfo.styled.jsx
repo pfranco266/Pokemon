@@ -11,22 +11,9 @@ import styled, { keyframes } from 'styled-components';
  
 
 
-export const Heading = styled.header`
-display: flex;
-justify-content: space-evenly;
-height: 50vh;
 
-position: relative;
-border-bottom-left-radius: 40px;
-border-bottom-right-radius: 40px;
-background-color: ${({ type }) => {
-    return colorMap[type]?.color
-  }};
-  @media(max-width: 768px) {
-    height: 40vh;
 
-  }
-`
+
 
 
 
@@ -40,64 +27,140 @@ display: none;
 
 
 
-export const PokemonTitle = styled.h1`
-text-transform: capitalize;
-font-size: 5em;
 
-@media(max-width: 600px) {
-  padding-left: 15px;
-}
-@media(max-width: 1068px) {
-  font-size: 3em
-}
 
-`
+export const Heading = styled.header`
+  height: 50vh;
+  width: 100%;
+  position: relative;
 
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background-color: ${({ type }) => colorMap[type]?.color};
+
+  @media (max-width: 1068px) {
+    height: 40vh;
+  }
+  @media (max-width: 768px) {
+    height: 35vh;
+  }
+  @media (max-width: 512px) {
+    height: 30vh;
+  }
+`;
+
+export const HeadingContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly; 
+  align-items: flex-end; /* Align items at the bottom */
+  position: relative;
+  height: 100%;
+`;
 
 export const HeaderTitleContainer = styled.div`
-position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2em 0;
-    @media(max-width: 900px){
-      justify-content: space-evenly;
-    }
-`
-
-export const LandingSVG = styled.img`
-transform: scaleX(-1);
+  position: relative;
+  margin-left: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   padding: 2em 0;
-  
-  @media(max-width: 950px) {
-    height: 18em;
-    width: 18em;
-  }
-    @media(max-width: 867px) {
-      height: 16em;
-      width: 16em;
-    }
-    @media(max-width: 768px) {
-      height: 12em;
-      width: 12em;
-    }
-    @media(max-width: 768px) {
-      height: 8em;
-      width: 8em;
-    }
-    
-`
+  height: 100%; 
 
+  @media (max-width: 1068px) {
+    justify-content: space-evenly;
+    margin-left: 0%;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 5%;
+    padding: 1.5em 0;
+  }
+
+  @media (min-width: 400px) {
+    padding: 1em 0;
+  }
+`;
+
+export const PokemonTitle = styled.h1`
+  text-transform: capitalize;
+  font-size: 5em;
+
+  @media (max-width: 1068px) {
+    font-size: 3em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5em;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 2em;
+    padding-left: 15px;
+  }
+
+  @media (min-width: 400px) {
+    padding-left: 10px;
+  }
+`;
 
 export const PokeNumber = styled.span`
-font-size: 3em;
-opacity: .7;
-font-weight: bold;
+  font-size: 3em;
+  opacity: 0.7;
+  font-weight: bold;
 
-@media(max-width: 600px) {
-  padding-left: 15px;
-}
-`
+  @media (max-width: 1068px) {
+    font-size: 2.5em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1.8em;
+    padding-left: 15px;
+  }
+
+  @media (min-width: 400px) {
+    padding-left: 10px;
+  }
+`;
+
+export const LandingSVG = styled.img`
+  transform: scaleX(-1);
+  padding: 2em 0;
+  align-self: flex-end; 
+
+  @media (max-width: 1068px) {
+    height: 16em;
+    width: 16em;
+  }
+
+  @media (max-width: 950px) {
+    height: 14em;
+    width: 14em;
+  }
+
+  @media (max-width: 768px) {
+    height: 12em;
+    width: 12em;
+  }
+
+  @media (min-width: 400px) {
+    height: 10em;
+    width: 10em;
+    align-self: center; 
+
+  }
+  @media (max-width: 400px) {
+    height: 8em;
+    width: 8em;
+    align-self: center; 
+    padding: 0;
+
+  }
+
+`;
 
 export const BackButton = styled(Link)`
     font-size: 2em;
@@ -125,7 +188,15 @@ export const EvolutionGridContainer = styled.div`
   grid-auto-rows: minmax(300px, auto); 
   justify-content: space-evenly; 
   margin-bottom: 5rem;
+  gap: 75px;
+
+  @media(min-width: 360px) {
+    grid-template-columns: repeat(1, 350px);
+  }
+
   @media(min-width: 400px) {
+    grid-template-columns: repeat(1, 400px);
+
     gap: 75px;
   }
   @media(min-width: 900px) {
