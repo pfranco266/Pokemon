@@ -51,15 +51,15 @@ export const Heading = styled.header`
 
 export const HeadingContainer = styled.div`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-evenly; 
   align-items: flex-end; 
   position: relative;
   height: 100%;
+
 `;
 
 export const HeaderTitleContainer = styled.div`
   position: relative;
-  margin-left: 25%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
