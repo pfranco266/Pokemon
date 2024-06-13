@@ -276,10 +276,17 @@ flex-direction: column;
 
 
 export const Price = styled.div`
+position: relative;
   font-size: 1rem;
   text-align: center;
 `
 
-
+export const AddToCartNotification = styled.span`
+  position: absolute;
+  bottom: -5%;
+  background-color: khaki;
+  color: black;
+  border-radius: 10px;
+`
 
 
