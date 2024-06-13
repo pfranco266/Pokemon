@@ -5,8 +5,6 @@ import { SearchInput } from "./Search.styled"
 function Search({ searchTerm, handleChange, handleSubmit }) {
 
 
-
-
     return (
 
 

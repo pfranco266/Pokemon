@@ -55,7 +55,6 @@ async function handleLoadMore() {
 
 
 useEffect(() => {
-    // Use the initialUrl for the first fetch
 
 
     fetchData(pokemonList.initialUrl);

@@ -34,7 +34,6 @@ function pokemonReducer(state, action) {
     switch (action.type) {
       case 'setPokemonDetails':
         const { pokemonDetailData, pokemonSpeciesData, evolutionData } = action.payload;
-        // Extract evolution chain
 
         const extractEvolutions = (chain) => {
           const evolutions = [];

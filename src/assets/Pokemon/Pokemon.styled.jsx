@@ -40,7 +40,7 @@ align-items: center;
 position: relative;
 background: ${({ color1, color2 }) => {
   const firstColor = colorMap[color1]?.color || '#f1f1f1';
-  const secondColor = color2 === undefined ? '#f6f6f6' : colorMap[color2]?.color ; // Ensure '#f6f6f6' is used if second color is not valid
+  const secondColor = color2 === undefined ? '#f6f6f6' : colorMap[color2]?.color ; 
   return color2 !== '#f1f1f1' ? `linear-gradient(${secondColor}, ${firstColor})` : `linear-gradient(#e66465, ${firstColor})`;
 }};
 

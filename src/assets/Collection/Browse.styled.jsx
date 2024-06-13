@@ -111,17 +111,6 @@ export const SinglePokemonContainer = styled(Link)`
 
 `
 
-// export const PokemonName = styled.h1`
-//   margin-left: 2em;
-//   display: inline;
-// `
-
-
-// export const PokemonIndex = styled.h3`
-//   margin-left: 1em;
-//   display: inline;
-// `
-
 
 export const PokemonName = styled.h1`
   position: absolute;
