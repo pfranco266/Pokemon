@@ -52,16 +52,19 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
         fetchData(pokeId);
     },[pokeId])
 
+
+    
     return (
         <>
-        {memoPokemon.loading && <h4>Loading... Please wait</h4>}
+
+         {memoPokemon.loading && <h2>Loading... Please wait</h2>  }
         
 
         {!memoPokemon?.id ? <HomeContainer>
             <h2>
             Sorry, we couldn't find {pokeId}. Try your search again
             </h2>
-            <Link to="/pokemon">
+            <Link to="/pokemon/collection">
             <h2>
             Back to all Pokemon
             </h2>

@@ -1,8 +1,8 @@
 
 import './App.css'
 import { Container } from './App.styled'
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Routes, Route} from 'react-router-dom';
+import React from 'react';
 import { CartProvider } from './CartContext';  // Adjust the path based on your structure
 
 import Home from "./assets/Home/Home"
@@ -14,7 +14,6 @@ import MoreInfoLanding from "./assets/PokemonMoreInfo/MoreInfoLanding"
 import BrowseLanding from './assets/Collection/BrowseLanding';
 
 function App() {
-  const [cart, setCart] = useState([]);
   return (
         <Container >
             <CartProvider>  
@@ -24,10 +23,9 @@ function App() {
               <Routes>
                   <Route path="/" element={<Home />}/>
                   <Route path="/collection" element={<BrowseLanding />}/>
-
+                  <Route path="/collection/:id" element={<MoreInfoLanding/>}/>
                   <Route path="/pokemoncards" element={<PokemonCatalogFC />}/>
                   <Route path="/cart" element={<Cart />}/>
-                  <Route path="/collection/:id" element={<MoreInfoLanding/>}/>
               </Routes>
 
             </CartProvider>
