@@ -214,6 +214,12 @@ width: 1350px;
     width: 600px;
 
   }
+
+  @media(max-width: 700px) {
+    width: 400px;
+    padding: 2em 0;
+
+  }
 `
 
 export const StyledLabel = styled.label`
