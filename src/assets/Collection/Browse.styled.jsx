@@ -199,13 +199,19 @@ export const StyledMdClear = styled(MdClear)`
 `;
 
 export const SearchFilterContainer = styled.div`
-width: 100%;
+width: 1350px;
   display: flex;
   align-items: flex-end;
-  justify-content: space-evenly;
-  padding: 2em;
+  justify-content: space-between;
 
-  @media(max-width: 768px) {
+  padding: 2em;
+  @media(max-width: 1350px) {
+    width: 875px;
+
+  }
+
+  @media(max-width: 1000px) {
+    width: 600px;
 
   }
 `
@@ -227,6 +233,7 @@ border: 2px solid #ccc;
 border-radius: 5px;
 font-size: 16px;
 outline: none;
+margin-top: .5em;
 transition: border-color 0.3s ease;
 
 &:focus {
@@ -244,7 +251,6 @@ transition: border-color 0.3s ease;
 export const DropdownButtonContainer = styled.div`
   display: flex; 
   justify-content: space-around;
-
   
 
 @media(max-width: 768px) {
@@ -257,4 +263,8 @@ export const DropdownButtonContainer = styled.div`
 
 export const FilterPokemonOuterContainer = styled(HomeContainer)`
 margin-bottom: 0;
+display: flex;
+align-items: start;
+
+
 `
