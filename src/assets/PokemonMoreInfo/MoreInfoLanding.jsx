@@ -6,7 +6,6 @@ import MoreInfoHeading from "./MoreInfoHeading";
 import MoreInfoBody from "./MoreInfoBody"
 import { HomeContainer } from "../Home/Home.styled";
 import { Link } from "react-router-dom";
-import FilterPokemon from "../Collection/FilterPokemon";
 
 function MoreInfoLanding () {
     const params = useParams();
@@ -66,7 +65,7 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
             <h2>
             Sorry, we couldn't find {pokeId}. Try your search again
             </h2>
-            <Link to="/pokemon/collection">
+            <Link to="/collection">
             <h2>
             Back to all Pokemon
             </h2>

@@ -64,7 +64,7 @@ function BrowsePokemon({ selectedOption }) {
 
     return (
         <OuterBrowseContainer>
-            {pokemonList?.loading && <h2>Loading...Please wait</h2>}
+            {pokemonList.list > 150? <h2>Loading...Please wait</h2> : null}
 
             <BrowseContainer>
                 {pokemonList && pokemonList?.list?.map((poke, index) => (
