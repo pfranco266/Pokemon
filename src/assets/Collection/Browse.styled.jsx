@@ -195,6 +195,7 @@ export const StyledMdClear = styled(MdClear)`
   color: white;
   width: 2em;
   height: 2em;
+
 `;
 
 export const SearchFilterContainer = styled.div`
@@ -208,4 +209,24 @@ width: 100%;
 export const StyledLabel = styled.label`
   font-size: 1.5em;
 
+`
+
+
+export const StyledSelect = styled.select`
+padding: 10px;
+border: 2px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+outline: none;
+transition: border-color 0.3s ease;
+
+&:focus {
+  border-color: #007bff;
+}
+`
+
+
+export const DropdownButtonContainer = styled.div`
+  display: flex; 
+  justify-content: space-around;
 `

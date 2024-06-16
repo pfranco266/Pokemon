@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchInput } from "./Search.styled"
+import { SearchInput, SearchButton } from "./Search.styled"
 import { HomeContainer } from "../Home/Home.styled";
 
 
@@ -15,7 +15,7 @@ function Search({ searchTerm, handleChange, handleSubmit }) {
                 value={searchTerm}
                 onChange={handleChange}
             />
-
+            <SearchButton>I choose you...</SearchButton>
 
         </form>
   

@@ -18,6 +18,7 @@ function BrowseLanding () {
     const [selectedOption, setSelectedOption] = useState('');
 
     function handleChange(event) {
+    
 
         setSearchTerm(event.target.value.toLowerCase().toString());
       }
@@ -26,14 +27,16 @@ function BrowseLanding () {
 
 
       function handleSubmit(event) {
+        if(event.target.value === undefined) {
+          event.preventDefault();
+          
+        }
 
-            
 
         navigate(`/collection/${searchTerm}`);
 
       }
 
-      console.log('layer1', selectedOption, typeof selectedOption)
 
 
     return (

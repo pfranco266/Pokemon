@@ -50,7 +50,6 @@ function pokemonReducer(state, action) {
         };
   
         const evolutions = extractEvolutions(evolutionData.chain);
-        console.log(pokemonDetailData.sprites)
         return {
           ...state,
           id: pokemonDetailData.id,

@@ -12,6 +12,7 @@ export const HomeContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+position: relative;
 justify-content: center;
 @media(max-width: 600px) {
     margin-bottom: 5vh;
