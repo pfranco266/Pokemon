@@ -28,4 +28,25 @@ transition: border-color 0.3s ease;
   border-color: #007bff;
 }
 
+@media(max-width: 768px) {
+  font-size: 14px;
+  padding: 8px;
+
+
+}
+
 `
+
+
+export const SearchForm = styled.form`
+display: flex;
+@media(max-width: 768px) {
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+
+
+}
+`
+
+

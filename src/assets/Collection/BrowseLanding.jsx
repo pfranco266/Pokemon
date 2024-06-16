@@ -42,10 +42,10 @@ function BrowseLanding () {
     return (
         <HomeContainer>
           <SearchFilterContainer>
-            <Search handleSubmit={handleSubmit} searchTerm={searchTerm} handleChange={handleChange}/>
-            <FilterPokemon selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
-            </SearchFilterContainer>
-            <BrowsePokemon selectedOption={selectedOption}/>
+              <Search handleSubmit={handleSubmit} searchTerm={searchTerm} handleChange={handleChange}/>
+              <FilterPokemon selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
+          </SearchFilterContainer>
+          <BrowsePokemon selectedOption={selectedOption}/>
         </HomeContainer>
     )
 }

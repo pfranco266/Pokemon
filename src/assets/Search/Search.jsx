@@ -1,6 +1,5 @@
 import React from "react";
-import { SearchInput, SearchButton } from "./Search.styled"
-import { HomeContainer } from "../Home/Home.styled";
+import { SearchInput, SearchButton, SearchForm } from "./Search.styled"
 
 
 function Search({ searchTerm, handleChange, handleSubmit }) {
@@ -8,7 +7,7 @@ function Search({ searchTerm, handleChange, handleSubmit }) {
 
     return (
 
-        <form onSubmit={handleSubmit}>
+        <SearchForm onSubmit={handleSubmit}>
             <SearchInput
                 type="text"
                 placeholder="Search for Pokémon..."
@@ -17,7 +16,7 @@ function Search({ searchTerm, handleChange, handleSubmit }) {
             />
             <SearchButton>I choose you...</SearchButton>
 
-        </form>
+        </SearchForm>
   
     )
 }

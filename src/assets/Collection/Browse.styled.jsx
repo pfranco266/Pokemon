@@ -204,10 +204,19 @@ width: 100%;
   align-items: flex-end;
   justify-content: space-evenly;
   padding: 2em;
+
+  @media(max-width: 768px) {
+
+  }
 `
 
 export const StyledLabel = styled.label`
   font-size: 1.5em;
+  @media(max-width: 768px) {
+    font-size: 1em;
+    flex: 1;
+  
+  }
 
 `
 
@@ -223,10 +232,29 @@ transition: border-color 0.3s ease;
 &:focus {
   border-color: #007bff;
 }
+
+@media(max-width: 768px) {
+  font-size: 14px;
+  flex: 1;
+
+}
 `
 
 
 export const DropdownButtonContainer = styled.div`
   display: flex; 
   justify-content: space-around;
+
+  
+
+@media(max-width: 768px) {
+  flex-direction: column;
+  gap: 5px;
+
+}
+`
+
+
+export const FilterPokemonOuterContainer = styled(HomeContainer)`
+margin-bottom: 0;
 `

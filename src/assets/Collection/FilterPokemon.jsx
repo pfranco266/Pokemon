@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import colorMap from "../Pokemon/colorMap";
-import { ClearButton, StyledMdClear, FilterContainer, DropdownButtonContainer, StyledLabel, StyledSelect } from "./Browse.styled";
-import { HomeContainer } from "../Home/Home.styled";
+import { ClearButton, StyledMdClear, FilterContainer, FilterPokemonOuterContainer, DropdownButtonContainer, StyledLabel, StyledSelect } from "./Browse.styled";
 
 function FilterPokemon({ selectedOption, setSelectedOption }) {
     const [selected, setSelected] = useState(false);
@@ -27,7 +26,7 @@ function FilterPokemon({ selectedOption, setSelectedOption }) {
     };
 
     return (
-        <HomeContainer>
+        <FilterPokemonOuterContainer>
             <StyledLabel htmlFor="Dropdown">Filter Pokemon by type: </StyledLabel>
             <DropdownButtonContainer>
                 <StyledSelect id="Dropdown" value={selectedOption} onChange={handleChange}>
@@ -43,7 +42,7 @@ function FilterPokemon({ selectedOption, setSelectedOption }) {
                     <StyledMdClear />
                 </ClearButton>
             </DropdownButtonContainer>
-        </HomeContainer>
+        </FilterPokemonOuterContainer>
     );
 }
 
