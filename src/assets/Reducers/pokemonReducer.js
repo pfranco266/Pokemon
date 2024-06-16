@@ -50,7 +50,7 @@ function pokemonReducer(state, action) {
         };
   
         const evolutions = extractEvolutions(evolutionData.chain);
-  
+        console.log(pokemonDetailData.sprites)
         return {
           ...state,
           id: pokemonDetailData.id,
@@ -92,11 +92,11 @@ sprites : [
   },
   {
     description: 'Generation 2',
-    picture: pokemonDetailData.sprites?.versions?.["generation-ii"]?.gold?.front_default || defaultImage
+    picture: pokemonDetailData?.sprites?.versions?.["generation-ii"]?.gold?.front_default || pokemonDetailData.sprites?.other?.home?.front_default || 'no picture available',
   },
   {
     description: 'Generation 3',
-    picture: pokemonDetailData.sprites?.versions?.["generation-iii"]?.emerald?.front_default || defaultImage
+    picture: pokemonDetailData.sprites?.versions?.["generation-iii"]?.emerald?.front_default || pokemonDetailData.sprites?.other?.home?.front_default ,
   },
   {
     description: 'Generation 4',

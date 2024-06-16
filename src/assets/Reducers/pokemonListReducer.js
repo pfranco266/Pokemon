@@ -10,13 +10,14 @@ function pokeListReducer (state, action) {
     switch (action.type) {
         case 'setPokeList':
             const data = action.payload;
-            // console.log('act', action, 'data', data)
+            console.log(data.next)
             return {
                 ...state, 
                 loading: false,
                 error: data.error,
                 list: [ ...state.list, ...data.results],
                 nextUrl: data.next,
+                allResults: `https://pokeapi.co/api/v2/pokemon/?offset=20&limit=231`
             };
         case 'setError':
             return {

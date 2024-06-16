@@ -4,6 +4,8 @@ import BrowsePokemon from "./BrowsePokemon";
 import { HomeContainer } from "../Home/Home.styled";
 
 import { useNavigate } from "react-router-dom";
+import FilterPokemon from "./FilterPokemon";
+import {SearchFilterContainer} from "./Browse.styled"
 
 function BrowseLanding () {
 
@@ -12,9 +14,12 @@ function BrowseLanding () {
 
     const [searchTerm, setSearchTerm] = useState('')
 
+
+    const [selectedOption, setSelectedOption] = useState('');
+
     function handleChange(event) {
 
-        setSearchTerm(event.target.value.toLowerCase());
+        setSearchTerm(event.target.value.toLowerCase().toString());
       }
 
     
@@ -23,17 +28,21 @@ function BrowseLanding () {
       function handleSubmit(event) {
 
             
-        console.log('this new', searchTerm, event)
 
         navigate(`/collection/${searchTerm}`);
 
       }
 
+      console.log('layer1', selectedOption, typeof selectedOption)
+
 
     return (
         <HomeContainer>
+          <SearchFilterContainer>
             <Search handleSubmit={handleSubmit} searchTerm={searchTerm} handleChange={handleChange}/>
-            <BrowsePokemon/>
+            <FilterPokemon selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
+            </SearchFilterContainer>
+            <BrowsePokemon selectedOption={selectedOption}/>
         </HomeContainer>
     )
 }

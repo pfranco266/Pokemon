@@ -13,11 +13,13 @@ function MoreInfoBody ({memoPokemon}) {
     return (
         <BodyContainer>
            <FlexColumnContainer>
-                <Title>Evolutions</Title>
-                <Evolution memoPokemon={memoPokemon}/>
                 <About memoPokemon={memoPokemon}/>
                 <Stats memoPokemon={memoPokemon}/>
                 <Moves memoPokemon={memoPokemon}/>
+                <Title>Evolutions</Title>
+
+                <Evolution memoPokemon={memoPokemon}/>
+               
             </FlexColumnContainer>
         </BodyContainer>
     )

@@ -6,6 +6,7 @@ import MoreInfoHeading from "./MoreInfoHeading";
 import MoreInfoBody from "./MoreInfoBody"
 import { HomeContainer } from "../Home/Home.styled";
 import { Link } from "react-router-dom";
+import FilterPokemon from "../Collection/FilterPokemon";
 
 function MoreInfoLanding () {
     const params = useParams();
@@ -13,7 +14,6 @@ function MoreInfoLanding () {
 
     const [pokemonDetails, setPokemonDetails] = useReducer(pokemonReducer, initialPokeDetails);
 
-    console.log(pokemonDetails)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -36,7 +36,8 @@ function MoreInfoLanding () {
                   type: 'setPokemonDetails',
                   payload: { pokemonDetailData, pokemonSpeciesData, evolutionData }
               })
-          } 
+            }
+
   
         } catch (error) {
             setPokemonDetails({
@@ -53,6 +54,7 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
     },[pokeId])
 
 
+    console.log(memoPokemon.sprites)
     
     return (
         <>

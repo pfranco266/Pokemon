@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 
 export const SearchInput = styled.input`
-  margin-top: 5em;
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 5px;

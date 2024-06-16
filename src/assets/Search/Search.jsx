@@ -1,12 +1,12 @@
 import React from "react";
 import { SearchInput } from "./Search.styled"
+import { HomeContainer } from "../Home/Home.styled";
 
 
 function Search({ searchTerm, handleChange, handleSubmit }) {
 
 
     return (
-
 
         <form onSubmit={handleSubmit}>
             <SearchInput
@@ -18,6 +18,7 @@ function Search({ searchTerm, handleChange, handleSubmit }) {
 
 
         </form>
+  
     )
 }
 

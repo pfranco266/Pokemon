@@ -3,6 +3,9 @@ import { HomeContainer } from "../Home/Home.styled";
 import colorMap from "../Pokemon/colorMap";
 import { keyframes } from 'styled-components';
 import { Link } from "react-router-dom";
+import { MdClear } from "react-icons/md";
+
+
 
 const rotatePokeball = keyframes`
   0% {
@@ -166,6 +169,43 @@ align-items:center;
 
 `
 
+export const ClearButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const FilterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 
+export const StyledMdClear = styled(MdClear)`
+  color: white;
+  width: 2em;
+  height: 2em;
+`;
 
+export const SearchFilterContainer = styled.div`
+width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  padding: 2em;
+`
+
+export const StyledLabel = styled.label`
+  font-size: 1.5em;
+
+`
