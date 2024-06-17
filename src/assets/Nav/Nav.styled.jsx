@@ -32,6 +32,13 @@ justify-content: space-evenly;
 `
 export const Link = styled(RouterLink)`
     color: white;
+    font-weight: bold;
+    text-decoration: none;
+
+font-size: 1.25em;
+outline: none;
+
+
     @media(min-width: 2000px) {
         font-size:  2em;
     }

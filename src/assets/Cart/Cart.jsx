@@ -4,6 +4,7 @@ import CartContext from "../../CartContext";
 import PokemonCard from "../Pokemon/PokemonCard";
 import { GridItems, PokemonGridItem, Price, PokemonGridContainer, AddToCart, ButtonContainer } from "../Pokemon/Pokemon.styled";
 import { Link } from "react-router-dom";
+import { LandingBodyContainer } from "../Home/Home.styled";
 
 function Cart() {
     const { cart, setCart } = useContext(CartContext);
@@ -62,7 +63,7 @@ function Cart() {
     };
 
     return (
-        <div>
+        <LandingBodyContainer>
             <Title>
                 Shopping Cart
             </Title>
@@ -100,7 +101,7 @@ function Cart() {
                     <Total>Your final total is: ${total}</Total>
                 </TotalContainer>
             )}
-        </div>
+        </LandingBodyContainer>
     );
 }
 

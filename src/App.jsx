@@ -12,7 +12,7 @@ import PokemonCatalogFC from './assets/Pokemon/PokemonCatalogue';
 
 import MoreInfoLanding from "./assets/PokemonMoreInfo/MoreInfoLanding"
 import BrowseLanding from './assets/Collection/BrowseLanding';
-
+import Footer from "./assets/Footer"
 function App() {
   return (
         <Container >
@@ -29,7 +29,7 @@ function App() {
               </Routes>
 
             </CartProvider>
-
+              <Footer/>
         </Container>
   )
 }
