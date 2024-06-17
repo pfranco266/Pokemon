@@ -4,6 +4,7 @@ import PokemonCard from "./PokemonCard"
 import CartContext from "../../CartContext";
 import { fetchPokeList } from "../Reducers/pokeAPI"
 import { initialPokeList, pokeListReducer } from "../Reducers/pokemonListReducer"
+import { SearchButton } from "../Search/Search.styled";
 // import { v4 as uuid } from 'uuid';
 
 
@@ -140,9 +141,9 @@ function Pokemon() {
             </PokemonGridContainer>
 
             {!pokeList.loading && pokeList?.list.length < 251 && 
-               <LoadMore disabled={disableButton} onClick={handleLoadMore}>
+               <SearchButton disabled={disableButton} onClick={handleLoadMore}>
                Load more Pokemon
-             </LoadMore>
+             </SearchButton>
             
              }
 
