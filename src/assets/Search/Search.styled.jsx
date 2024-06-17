@@ -31,7 +31,7 @@ transition: border-color 0.3s ease;
 @media(max-width: 768px) {
   font-size: 14px;
   padding: 8px;
-
+  margin-left: 0;
 
 }
 

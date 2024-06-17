@@ -30,6 +30,7 @@ export const PokeballSVG = styled.img`
 export const OuterBrowseContainer = styled(HomeContainer)`
   flex-direction: column;
   margin: 5em 0;
+
 `
 
 export const BrowseContainer = styled.div`
@@ -207,6 +208,7 @@ width: 1350px;
   padding: 2em;
   @media(max-width: 1350px) {
     width: 875px;
+    align-items: flex-start;
 
   }
 
@@ -227,7 +229,7 @@ export const StyledLabel = styled.label`
   @media(max-width: 768px) {
     font-size: 1em;
     flex: 1;
-  
+    display: none;
   }
 
 `
@@ -249,6 +251,7 @@ transition: border-color 0.3s ease;
 @media(max-width: 768px) {
   font-size: 14px;
   flex: 1;
+  margin-top: 0;
 
 }
 `
@@ -271,6 +274,10 @@ export const FilterPokemonOuterContainer = styled(HomeContainer)`
 margin-bottom: 0;
 display: flex;
 align-items: start;
+@media(max-width: 768px) {
+  margin-bottom: 2.5vh;
 
+
+}
 
 `

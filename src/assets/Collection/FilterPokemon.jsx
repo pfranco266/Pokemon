@@ -30,7 +30,7 @@ function FilterPokemon({ selectedOption, setSelectedOption }) {
             <StyledLabel htmlFor="Dropdown">Filter Pokemon by type: </StyledLabel>
             <DropdownButtonContainer>
                 <StyledSelect id="Dropdown" value={selectedOption} onChange={handleChange}>
-                    <option value={''}>Select an option</option>
+                    <option value={''}>Filter by Type</option>
                     {arrOfPokeType.length > 0 && arrOfPokeType.map((type, index) => (
                         <option key={index} value={type.type.name}>{type.type.name}</option>
                     ))}
