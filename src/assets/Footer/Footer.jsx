@@ -1,5 +1,5 @@
 import React from "react";
-import {FooterContainer, FooterTextContainer, FooterIconContainer, SocialsIcons} from "./Footer.styled"
+import {FooterContainer, FooterTextContainer, FooterIconContainer,FooterText, SocialsIcons} from "./Footer.styled"
 import linkedin from "../../../public/icons8-linkedin.svg"
 import github from "../../../public/iconmonstr-github-1.svg"
 import code from "../../../public/code-slash-svgrepo-com.svg"
@@ -13,7 +13,7 @@ function Footer () {
     return(
         <FooterContainer>
             <FooterTextContainer>
-            All rights reserved. Made an implemented by Phil Franco, using React + Vite & Styled-Components. &#169;2024
+            <FooterText>All rights reserved. Made an implemented by Phil Franco, using React + Vite & Styled-Components. &#169;2024</FooterText>
             </FooterTextContainer>
             <FooterIconContainer>
 
