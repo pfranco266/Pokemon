@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
     width: 100%;
-    height: 15vh;
+    height: 10vh;
     display: flex;
     align-items: baseline; /* Align items to the baseline */
     justify-content: flex-end; /* Align items to the right */
