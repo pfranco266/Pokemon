@@ -24,7 +24,6 @@ export const NavBar = styled.nav`
 width: 100%;
 background: #333; 
 color: #fff; 
-padding: 10px 0;
 box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
 z-index: 1000; /* Ensure it's above other content */
 display: flex;
@@ -34,13 +33,19 @@ export const Link = styled(RouterLink)`
     color: white;
     font-weight: bold;
     text-decoration: none;
-
+    padding: 10px;
 font-size: 1.25em;
 outline: none;
 
 
     @media(min-width: 2000px) {
         font-size:  2em;
+    }
+    &:hover{
+        background: #444; 
+        border-radius: 10px;
+        text-decoration: underline;
+
     }
     
 `

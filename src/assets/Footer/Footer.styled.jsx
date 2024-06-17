@@ -31,8 +31,10 @@ export const FooterIconContainer = styled.div`
 export const SocialsIcons = styled.img`
     width: 3em;
     height: 3em;
-    &:hover{
-        color: white;
-    }
+    &:hover {
+        background: #444; 
+        border-radius: 10px;
+
+      }
 
 `;
