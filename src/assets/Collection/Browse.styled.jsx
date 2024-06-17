@@ -226,6 +226,10 @@ width: 1350px;
 
 export const StyledLabel = styled.label`
   font-size: 1.5em;
+  @media(max-width: 1350px) {
+
+    display: none;
+  }
   @media(max-width: 768px) {
     font-size: 1em;
     flex: 1;
@@ -246,6 +250,11 @@ transition: border-color 0.3s ease;
 
 &:focus {
   border-color: #007bff;
+}
+@media(max-width: 1350px) {
+
+  margin-top: 0;
+
 }
 
 @media(max-width: 768px) {
