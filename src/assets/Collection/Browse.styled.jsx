@@ -248,8 +248,12 @@ outline: none;
 margin-top: .5em;
 transition: border-color 0.3s ease;
 
+
 &:focus {
   border-color: #007bff;
+}
+&: hover{
+  cursor: pointer;
 }
 @media(max-width: 1350px) {
 

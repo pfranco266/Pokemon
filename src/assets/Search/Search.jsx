@@ -14,7 +14,7 @@ function Search({ searchTerm, handleChange, handleSubmit }) {
                 value={searchTerm}
                 onChange={handleChange}
             />
-            <SearchButton>I choose you...</SearchButton>
+            <SearchButton>I choose you!</SearchButton>
 
         </SearchForm>
   

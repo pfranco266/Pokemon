@@ -53,7 +53,6 @@ const memoPokemon = useMemo(() => pokemonDetails, [pokemonDetails]);
     },[pokeId])
 
 
-    console.log(memoPokemon.sprites)
     
     return (
         <>

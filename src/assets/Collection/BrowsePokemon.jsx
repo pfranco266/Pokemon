@@ -60,7 +60,6 @@ function BrowsePokemon({ selectedOption }) {
         handleLoadAll();
     }, [pokemonList?.nextUrl]);
 
-console.log(pokemonList?.list.length)
 
     return (
         <OuterBrowseContainer>
