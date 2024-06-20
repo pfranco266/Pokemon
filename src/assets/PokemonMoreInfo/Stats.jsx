@@ -14,7 +14,9 @@ function Stats({ memoPokemon }) {
     return (
         <FlexColumnContainer>
             <Title>{memoPokemon.name} Stats</Title>
-            <StatsGridContainer>
+            <Title>Total: {memoPokemon.stats.hp + memoPokemon.stats.attack + memoPokemon.stats.defense + memoPokemon.stats.specialAttack + memoPokemon.stats.specialDefense + memoPokemon.stats.speed} </Title>
+
+            <StatsGridContainer> 
                 <StatsFlexContainer>
                     <StatsText>HP</StatsText>
                     <HealthIcon />

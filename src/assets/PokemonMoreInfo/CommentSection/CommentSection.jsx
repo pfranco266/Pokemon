@@ -12,8 +12,8 @@ function CommentSection ({id}) {
             const res = await fetch(`http://localhost:3000/collection/${id}`);
            
             const data = await res.json();
-            console.log(data);
-            ;
+            console.log('data:', data,'res', res);
+            
         } catch (error) {
             console.error('Fetch error:', error); // Log the error for debugging
         }
@@ -22,7 +22,7 @@ function CommentSection ({id}) {
 
     useEffect(() => {
         fetchComments(id);
-    }, [])
+    }, [id])
 
 
     async function handleSubmit(e) {
@@ -38,7 +38,7 @@ function CommentSection ({id}) {
             ])
 
         } catch (error) {
-            
+            console.log(error.message)
         }
     }
 
