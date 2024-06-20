@@ -4,11 +4,6 @@ dotenv.config();
 import { Sequelize } from '@sequelize/core';
 import { PostgresDialect } from '@sequelize/postgres';
 
-console.log('DB_NAME:', process.env.DB_NAME);
-console.log('DB_USER:', process.env.DB_USER);
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD); // Ensure this is printed as a string
-  
-
   const sequelize = new Sequelize({
     dialect: PostgresDialect,
     database: process.env.DB_NAME,
