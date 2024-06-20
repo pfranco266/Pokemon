@@ -52,3 +52,32 @@ transition: border-color 0.3s ease;
 }
 
 `
+
+export const SingleCommentContainer = styled.section`
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+
+`
+
+export const SingleCommentCard = styled.div`
+  text-wrap: wrap;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #050404;
+  margin: 15px 0;
+
+
+
+`
+
+export const SingleCommentAuthor = styled.h3`
+
+`
+
+export const SingleCommentTime = styled.span`
+  font-size: 12px;
+  opacity: .7;
+  text-decoration: italic;
+`

@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { CommentSectionContainer, CommentForm, CommentLabel, CommentTextField, CommentSubmitButton } from "./CommentSection.styled";
-import Comments from "./Comments.jsx"
+import { v4 as uuid } from 'uuid';
+import Comments from "./Comments"
+
 
 function CommentSection ({id}) {
 
@@ -10,10 +12,12 @@ function CommentSection ({id}) {
     async function fetchComments(id) {
         try {
             const res = await fetch(`http://localhost:3000/collection/${id}`);
-           
             const data = await res.json();
-            console.log('data:', data,'res', res);
-            
+            setComments(data)
+
+            console.log(data)
+            console.log('comments', comments)
+
         } catch (error) {
             console.error('Fetch error:', error); // Log the error for debugging
         }
@@ -24,18 +28,41 @@ function CommentSection ({id}) {
         fetchComments(id);
     }, [id])
 
+  
+
 
     async function handleSubmit(e) {
         e.preventDefault();
-
+        const commentData = {
+            id: uuid(),
+            content: e.target.elements.comment.value,
+            pokemonId: id, 
+            author: 'some dude'
+        }
+        console.log("DATRAAA", commentData)
         try {
-            setComments(prev=> [
-                ...prev,
-                {
-                    id: Date.now(),
-                    description: e.target.elements.comment.value,
-                }
-            ])
+        
+            const res = await fetch(`http://localhost:3000/collection/${id}`, {
+                    method: 'POST', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                      },
+                    body: JSON.stringify(commentData),
+                })
+                
+
+  
+
+            if(!res.ok) {
+                throw new Error('error posting comment')
+            }
+            fetchComments(id);
+
+        
+
+            setTextField('')
+            // setComments(prev => )
+
 
         } catch (error) {
             console.log(error.message)
@@ -47,7 +74,7 @@ function CommentSection ({id}) {
     }
 
 
-        console.log(comments)
+        // console.log(typeof comments)
     return (
         <CommentSectionContainer>
             <CommentForm onSubmit={handleSubmit} >

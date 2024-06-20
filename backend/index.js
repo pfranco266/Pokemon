@@ -10,21 +10,26 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(cors())
+app.use(express.json()); 
 
 
-app.get('/collection/:id', async (req, res) => {
-  
+app.get('/collection/:pokemonId', async (req, res) => {
     const { pokemonId } = req.params;
-    let comments = await Comments.findAll({ where: { pokemonId } }); 
-    if (comments.length === 0) {
-        comments = 'No comments yet. Be the first!';
-      }
+    console.log(pokemonId)
+    
+    const comments = await Comments.findAll({where: {
+        pokemonId: pokemonId
+    }})
+
+    console.log('NAALLLLLLLLLWWKLNWENEI', comments)
+
+
 try {
     res.status(200).send({
         message: 'hello world',
         data: comments,
         someProp: 'property',
-        id: id
+        id: pokemonId
       });
 } catch (error) {
     console.log(error.message)
@@ -32,7 +37,7 @@ try {
         message: 'sorry dude',
         data: 'piece ovf shit',
         someProp: 'proppies',
-        id: id
+        id: pokemonId
       });
 }
 });
@@ -40,24 +45,21 @@ try {
 
 app.post('/collection/:pokemonId', async (req, res) => {
     console.log('postHIT!')
-    console.log('req', req)
     console.log('ohh yeah touch mah body', req.body)
-    const {content, user, pokemonId} = req.body;
-    const comment = await Comments.create({content, user, pokemonId})
+    const {content, author, pokemonId} = req.body;
+   
 try {
+    const comment = await Comments.create({content, author, pokemonId})
+    console.log('success', comment)
     res.status(200).send({
-        message: 'hello world',
-        data: 'piece ovf shit',
-        someProp: 'property',
-        id: id
+        message: 'success hogans',
+        comment: comment
       });
 } catch (error) {
     console.log(error.message)
     res.status(400).send({
         message: 'sorry dude',
-        data: 'piece ovf shit',
-        someProp: 'proppies',
-        id: id
+     
       });
 }
 });
