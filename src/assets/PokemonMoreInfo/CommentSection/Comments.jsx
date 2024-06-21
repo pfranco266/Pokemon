@@ -3,19 +3,17 @@ import { SingleCommentContainer, SingleCommentCard, SingleCommentAuthor, SingleC
 
 function Comments({ comments }) {
 
-    console.log('heee', comments.data) // this logs  an array(2) with correct details
-    console.log(Array.isArray(comments.data));
 
 
     return (
         <SingleCommentContainer>
             COMMENTS: 
             <ul>
-                {comments?.data?.length > 0 && comments?.data.map((comment, index) => {
+                {comments?.length > 0 && comments?.map((comment, index) => {
                     return (
-                        <SingleCommentCard>
+                        <SingleCommentCard key={comment?.id}>
                             <SingleCommentAuthor>{index + 1}: {comment?.author}<SingleCommentTime>(says)</SingleCommentTime> * <SingleCommentTime>{comment.createdAt}</SingleCommentTime></SingleCommentAuthor>
-                            <li key={comment?.id}> {comment?.content}</li>
+                            <li > {comment?.content}</li>
                         </SingleCommentCard>
                     )
                 })}
@@ -24,3 +22,6 @@ function Comments({ comments }) {
     )
 }
 export default Comments
+
+
+

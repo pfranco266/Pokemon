@@ -13,9 +13,12 @@ function CommentSection ({id}) {
         try {
             const res = await fetch(`http://localhost:3000/collection/${id}`);
             const data = await res.json();
-            setComments(data)
-
             console.log(data)
+
+            setComments(data.data)
+            console.log(comments)
+
+
             console.log('comments', comments)
 
         } catch (error) {
@@ -39,7 +42,6 @@ function CommentSection ({id}) {
             pokemonId: id, 
             author: 'some dude'
         }
-        console.log("DATRAAA", commentData)
         try {
         
             const res = await fetch(`http://localhost:3000/collection/${id}`, {
@@ -49,20 +51,24 @@ function CommentSection ({id}) {
                       },
                     body: JSON.stringify(commentData),
                 })
-                
-
-  
-
+     
             if(!res.ok) {
                 throw new Error('error posting comment')
             }
-            fetchComments(id);
+            const data = await res.json()
+     
 
-        
+            setComments(prev => [
+                ...prev,
+                {
+                    id: data.comment.id,
+                    pokemonId: data.comment.pokemonId,
+                    content: data.comment.content,
+                    author: data.comment.author
+                }
+            ]);
 
             setTextField('')
-            // setComments(prev => )
-
 
         } catch (error) {
             console.log(error.message)
@@ -73,8 +79,6 @@ function CommentSection ({id}) {
         setTextField(e.target.value)
     }
 
-
-        // console.log(typeof comments)
     return (
         <CommentSectionContainer>
             <CommentForm onSubmit={handleSubmit} >

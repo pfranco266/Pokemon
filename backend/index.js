@@ -13,6 +13,9 @@ app.use(cors())
 app.use(express.json()); 
 
 
+
+
+// get route request for pokemon's comments
 app.get('/collection/:pokemonId', async (req, res) => {
     const { pokemonId } = req.params;
     console.log(pokemonId)
@@ -20,9 +23,6 @@ app.get('/collection/:pokemonId', async (req, res) => {
     const comments = await Comments.findAll({where: {
         pokemonId: pokemonId
     }})
-
-    console.log('NAALLLLLLLLLWWKLNWENEI', comments)
-
 
 try {
     res.status(200).send({
@@ -44,8 +44,32 @@ try {
 
 
 app.post('/collection/:pokemonId', async (req, res) => {
-    console.log('postHIT!')
-    console.log('ohh yeah touch mah body', req.body)
+  
+    const {content, author, pokemonId} = req.body;
+   
+try {
+    const comment = await Comments.create({content, author, pokemonId})
+    console.log('success', comment)
+    res.status(200).send({
+        message: 'success hogans',
+        comment: comment
+      });
+} catch (error) {
+    console.log(error.message)
+    res.status(400).send({
+        message: 'sorry dude',
+     
+      });
+}
+});
+
+app.get('/', (req, res) => {
+  res.send('Goodbye World!');
+});
+
+
+app.post('/collection/:pokemonId', async (req, res) => {
+  
     const {content, author, pokemonId} = req.body;
    
 try {
