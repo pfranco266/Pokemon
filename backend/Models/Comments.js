@@ -14,7 +14,7 @@ Comments.init({
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 251], // Minimum length of 3 characters and maximum length of 251 characters
+        len: [3, 251], 
       },
     },
     author: {

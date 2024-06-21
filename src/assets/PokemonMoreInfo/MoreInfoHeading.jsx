@@ -25,7 +25,7 @@ useEffect(() => {
 return (
     <Heading type={memoPokemon?.types[0]?.type?.name}>
         <HeadingContainer>
-            <BackButton to="/pokemon">
+            <BackButton to="/collection">
                 <IoMdArrowRoundBack />
             </BackButton>
             <HeaderTitleContainer>
