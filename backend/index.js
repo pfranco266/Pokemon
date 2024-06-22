@@ -46,7 +46,7 @@ try {
 app.post('/collection/:pokemonId', async (req, res) => {
     console.log('running post')
 
-    const {id, content, author, pokemonId} = req.body;
+    const { content, author, pokemonId} = req.body;
 try {
     console.log('bah', req.body)
 
