@@ -10,14 +10,12 @@ const initialComments = {
 function commentReducer (state, action) {
     switch (action.type) {
         case 'fetchComments':
-            console.log(action.payload)
         return  {
                 ...state,
                 commentsList: action.payload
             };
         case 'submitComment':
 
-        console.log('submitter', action.payload)
 
            return {
                 ...state,
@@ -29,9 +27,15 @@ function commentReducer (state, action) {
                 commentsList: [...state.commentsList, action.payload]
             };
         case 'deleteComment':
+        
+
+        const updatedCommentList = state?.commentsList?.filter(comment => {
+            return comment.id !== action.payload; // Ensure you compare the ID
+        });
+            
             return {
                  ...state,
-                 commentsList: [...state.commentsList, action.payload]
+                 commentsList: updatedCommentList
             };    
         case 'default':
         return {

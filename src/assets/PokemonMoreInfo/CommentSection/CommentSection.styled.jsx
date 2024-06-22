@@ -81,3 +81,20 @@ export const SingleCommentTime = styled.span`
   opacity: .7;
   text-decoration: italic;
 `
+
+export const EditOrDeleteContainer= styled.div`
+ display: flex;
+ margin: 8px;
+
+`
+
+export const EditButton = styled.button`
+  width: 124px; 
+  height: 25px;
+  margin-right: 12px;
+`
+
+  export const DeleteButton = styled.button`
+  width: 124px; 
+  height: 25px;
+`

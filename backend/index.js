@@ -44,10 +44,12 @@ try {
 
 
 app.post('/collection/:pokemonId', async (req, res) => {
-  
-    const {content, author, pokemonId} = req.body;
-   
+    console.log('running post')
+
+    const {id, content, author, pokemonId} = req.body;
 try {
+    console.log('bah', req.body)
+
     const comment = await Comments.create({content, author, pokemonId})
     console.log('success', comment)
     res.status(200).send({
@@ -63,9 +65,44 @@ try {
 }
 });
 
-app.get('/', (req, res) => {
-  res.send('Goodbye World!');
-});
+app.delete('/collection/:id', async (req, res) => {
+    const data = req.body;
+    console.log('running delete', data.commentId);
+    try {
+        console.log('Before Comments.destroy call');
+
+        const deletedCount  = await Comments.destroy({
+            where: {
+                id: data.commentId,
+              },
+        })
+
+        if(deletedCount === 0) {
+            console.log("BOOOOOOO")
+            res.status(404).send({
+                deleted: false,
+                message: 'Comment deleted unsuccessfully',
+            });
+        }
+
+        if(deletedCount === 1) {
+            console.log("HRURRRAAYAYYYYY")
+            res.status(200).send({
+                deleted: true,
+                message: 'Comment deleted successfully',
+            });
+        }
+       
+
+        
+    } catch (error) {
+        res.status(500).send({
+            deleted: false,
+            message: 'you blew it',
+        })    }
+})
+
+
 
 
 app.post('/collection/:pokemonId', async (req, res) => {

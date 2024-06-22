@@ -11,7 +11,7 @@ function CommentSection ({id}) {
     const [textField, setTextField] = useState('')
     const [comments, setComments] = useReducer(commentReducer, initialComments);
 
-
+    //fetch initial comments
     async function fetchComments(id) {
         try {
             const res = await fetch(`http://localhost:3000/collection/${id}`);
@@ -32,13 +32,15 @@ function CommentSection ({id}) {
     }
 
 
+
     useEffect(() => {
         fetchComments(id);
+        setTextField('')
     }, [id])
 
   
 
-
+    //handle the submission 
     async function handleSubmit(e) {
         e.preventDefault();
         const commentData = {
@@ -61,15 +63,42 @@ function CommentSection ({id}) {
                 throw new Error('error posting comment')
             }
             const data = await res.json()
-     
-
                    
             setComments({
                 type: 'submitComment',
                 payload: data.comment,
-            } );
+            });
 
             setTextField('')
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+   async function handleDelete(commentId) {
+
+
+        try {
+            const res = await fetch(`http://localhost:3000/collection/${id}`, {
+                    method: 'DELETE', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                      },
+                    body: JSON.stringify({ commentId }),
+                })
+                console.log(res)
+     
+            if(!res.ok) {
+                const errorText = await res.text();
+                console.error('Failed to delete comment:', errorText);
+                throw new Error('Failed to delete comment');
+            }
+            const data = await res.json()
+            setComments({
+                type: 'deleteComment',
+                payload: commentId,
+            });
 
         } catch (error) {
             console.log(error.message)
@@ -87,7 +116,7 @@ function CommentSection ({id}) {
                 <CommentTextField name="comment" value={textField} onChange={handleChange} />
                 <CommentSubmitButton type="submit">Submit Comment</CommentSubmitButton>
             </CommentForm>
-            <Comments comments={comments?.commentsList}/>
+            <Comments handleDelete={handleDelete} comments={comments?.commentsList}/>
         </CommentSectionContainer>
     )
 }
