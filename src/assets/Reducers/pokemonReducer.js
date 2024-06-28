@@ -158,6 +158,25 @@ sprites : [
 
 export {initialPokeDetails, pokemonReducer};
 
+// target = 9
+
+//arr = [4, 2, 7, 10]
 
 
+function twoSum(arr, target) {
+  if(arr.length < 1) return null;
 
+  let mapper = new Map();
+
+  for(let i = 0; i < arr.legnth; i ++ ) {
+    // something + something = 9;
+    // something = 9 - something; 
+    let compliment = target - arr[i]; 
+    if(mapper.has(compliment)) {
+      return [mapper.get(compliment), i ]
+    } else {
+      mapper.set(arr[i], i)
+    }
+  }
+
+}

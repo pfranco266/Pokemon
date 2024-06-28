@@ -1,6 +1,5 @@
 import React from "react";
-import {FlexColumnContainer, AbilitiesGridContainer,StatsText, AbilitiesFlexContainer} from "./MoreInfo.styled"
-import { Title } from "../Home/Home.styled";
+import {FlexColumnContainer, MoreInfoSubtitle, AbilitiesGridContainer,StatsText, AbilitiesFlexContainer} from "./MoreInfo.styled"
 
 function Moves ({memoPokemon}) {
       
@@ -18,7 +17,7 @@ function Moves ({memoPokemon}) {
       
 return (
     <FlexColumnContainer>
-        <Title>Natural Abilities</Title>
+        <MoreInfoSubtitle>Natural Abilities</MoreInfoSubtitle>
         <AbilitiesGridContainer>
             {learnedMoves && learnedMoves.map((move, index) => {
                 return (

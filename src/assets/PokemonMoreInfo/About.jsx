@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import { FlexColumnContainer, PrevButton, NextButton, AboutInfoContainer, AboutImgTitle, AboutImgContainer, AboutTextContainer } from "./MoreInfo.styled";
+import { FlexColumnContainer, PrevButton, MoreInfoSubtitle,  NextButton, AboutInfoContainer, AboutImgTitle, AboutImgContainer, AboutTextContainer } from "./MoreInfo.styled";
 import { AboutSVG } from "./MoreInfo.styled"
-import { Title } from "../Home/Home.styled";
 
 
 
@@ -41,9 +40,9 @@ function About({ memoPokemon }) {
 
     return (
         <FlexColumnContainer>
-            <Title>
+            <MoreInfoSubtitle>
                 About {memoPokemon.name}
-            </Title>
+            </MoreInfoSubtitle>
             <AboutInfoContainer>
                 <AboutImgContainer>
                     <AboutImgTitle>{memoPokemon?.sprites[pictureNumber]?.description}</AboutImgTitle>

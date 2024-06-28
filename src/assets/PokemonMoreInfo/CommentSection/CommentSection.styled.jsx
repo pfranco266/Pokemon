@@ -82,9 +82,60 @@ export const SingleCommentTime = styled.span`
   text-decoration: italic;
 `
 
+
+export const ButtonWrapperDiv = styled.div`
+  position: relative;
+  width: 124px; 
+`
+export const MiddleButtonWrapper = styled.div`
+  position: relative;
+  z-index: 10;
+`
+export const ButtonWrapperLower = styled.div`
+  position: absolute;
+  z-index: 10;
+`
+
+export const CancelLower = styled.button`
+  position: absolute;
+  background-color: grey;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  z-index: 1;
+  width: 124px; 
+  height: 25px;
+  color: white;
+
+`
+
+export const MessageAbove = styled.span`
+  position: absolute;
+  background: none;
+  color: white;
+  font-weight: 700
+  position: absolute;
+  white-space: nowrap; 
+  top: 0; 
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 25px;
+  transition: transform 0.5s ease;
+  transform: ${props => (props.isConfirming ? 'translateY(-100%)' : 'translateY(0)')};
+
+`
+export const ButtonSlideDownDiv = styled.div`
+transition: transform 5s ease;
+
+transform: ${props => (props.isConfirming ? 'translateY(100%)' : 'translateY(0)')};
+
+`
+
 export const EditOrDeleteContainer= styled.div`
  display: flex;
- margin: 8px;
+ position: relative;
+ margin: 25px 0;
 
 `
 
@@ -97,4 +148,7 @@ export const EditButton = styled.button`
   export const DeleteButton = styled.button`
   width: 124px; 
   height: 25px;
+  background-color: #ff1e1e;
+  color: white;
+  z-index: 10;
 `

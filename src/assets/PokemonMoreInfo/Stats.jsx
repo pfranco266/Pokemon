@@ -1,7 +1,6 @@
 import React from "react";
 import { FlexColumnContainer } from "./MoreInfo.styled";
-import { Title } from "../Home/Home.styled";
-import { StatsGridContainer, StatsFlexContainer, StatsText, AttackIcon, DefenseIcon, SpecialAttackIcon, SpecialDefenseIcon, HealthIcon, SpeedIcon } from "./MoreInfo.styled";
+import { StatsGridContainer, MoreInfoSubtitle, StatsFlexContainer, StatsText, AttackIcon, DefenseIcon, SpecialAttackIcon, SpecialDefenseIcon, HealthIcon, SpeedIcon } from "./MoreInfo.styled";
 
 
 
@@ -13,8 +12,8 @@ import { StatsGridContainer, StatsFlexContainer, StatsText, AttackIcon, DefenseI
 function Stats({ memoPokemon }) {
     return (
         <FlexColumnContainer>
-            <Title>{memoPokemon.name} Stats</Title>
-            <Title>Total: {memoPokemon.stats.hp + memoPokemon.stats.attack + memoPokemon.stats.defense + memoPokemon.stats.specialAttack + memoPokemon.stats.specialDefense + memoPokemon.stats.speed} </Title>
+            <MoreInfoSubtitle>{memoPokemon.name} Stats</MoreInfoSubtitle>
+            <h2>Total: {memoPokemon.stats.hp + memoPokemon.stats.attack + memoPokemon.stats.defense + memoPokemon.stats.specialAttack + memoPokemon.stats.specialDefense + memoPokemon.stats.speed} </h2>
 
             <StatsGridContainer> 
                 <StatsFlexContainer>

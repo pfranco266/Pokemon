@@ -29,8 +29,11 @@ export const PokeballSVG = styled.img`
 
 export const OuterBrowseContainer = styled(HomeContainer)`
   flex-direction: column;
-  margin: 5em 0;
+  margin: 2em 0;
+  @media(min-width: 700px) {
+    margin: 1em 0;
 
+  }
 `
 
 export const BrowseContainer = styled.div`

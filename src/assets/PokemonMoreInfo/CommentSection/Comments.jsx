@@ -1,9 +1,10 @@
 import React from "react";
-import { SingleCommentContainer, SingleCommentCard, SingleCommentAuthor, SingleCommentTime, EditOrDeleteContainer, EditButton, DeleteButton } from './CommentSection.styled'
+import { SingleCommentContainer, SingleCommentCard,  SingleCommentAuthor, SingleCommentTime, EditOrDeleteContainer, EditButton,  } from './CommentSection.styled'
+import CommentButton from "./CommentButtons"
+
 
 function Comments({ comments, handleDelete }) {
 
-    
 
     return (
         <SingleCommentContainer>
@@ -14,11 +15,12 @@ function Comments({ comments, handleDelete }) {
                         <SingleCommentCard key={comment?.id}>
                             <SingleCommentAuthor>{index + 1}: {comment?.author}<SingleCommentTime>(says)</SingleCommentTime> * <SingleCommentTime>{comment.createdAt}</SingleCommentTime></SingleCommentAuthor>
                             <li > {comment?.content}</li>
-                            <EditOrDeleteContainer>
-                                <EditButton>Edit Comment</EditButton>
-                                <DeleteButton onClick={() => handleDelete(comment?.id)}>Delete Comment</DeleteButton>
+                           
 
-                            </EditOrDeleteContainer>
+                                {/* <EditButton>Edit Comment</EditButton> */}
+
+                                <CommentButton handleDelete={handleDelete} commentId={comment?.id} />
+                              
                         </SingleCommentCard>
                     )
                 })}
