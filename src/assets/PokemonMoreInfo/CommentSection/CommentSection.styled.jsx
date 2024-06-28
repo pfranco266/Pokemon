@@ -15,11 +15,19 @@ export const CommentForm = styled.form`
 
 export const CommentLabel = styled.label`
     font-size: 24px;
+    margin: 1em 0;
 `
 
 export const CommentTextField = styled.textarea`
     width: 400px;
     height: 100px;
+    margin: 1em 0;
+`
+
+export const AuthorInput = styled.input`
+width: 400px;
+height: 25px;
+margin: 1em 0;
 `
 
 export const CommentSubmitButton = styled.button`
@@ -33,7 +41,8 @@ border-radius: 5px;
 font-size: 16px;
 font-weight: bold;
 outline: none;
-margin-left: 1em;
+margin: 1em 0 1em 0;
+
 transition: border-color 0.3s ease;
 
 
@@ -65,7 +74,6 @@ export const SingleCommentCard = styled.div`
   font-size: 16px;
   display: flex;
   flex-direction: column;
-  background-color: #050404;
   margin: 15px 0;
 
 
@@ -152,3 +160,4 @@ export const EditButton = styled.button`
   color: white;
   z-index: 10;
 `
+

@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useReducer} from "react";
-import { CommentSectionContainer, CommentForm, CommentLabel, CommentTextField, CommentSubmitButton } from "./CommentSection.styled";
+import { CommentSectionContainer, CommentForm, CommentLabel, AuthorInput, CommentTextField, CommentSubmitButton } from "./CommentSection.styled";
 import { v4 as uuid } from 'uuid';
 import Comments from "./Comments"
 import { initialComments, commentReducer } from "../../Reducers/commentsReducer";
@@ -9,6 +9,8 @@ function CommentSection ({id}) {
 
 
     const [textField, setTextField] = useState('')
+    const [inputField, setInputField] = useState('')
+
     const [comments, setComments] = useReducer(commentReducer, initialComments);
 
     //fetch initial comments
@@ -47,7 +49,7 @@ function CommentSection ({id}) {
             id: uuid(),
             content: e.target.elements.comment.value,
             pokemonId: id, 
-            author: 'some dude'
+            author: e.target.elements.author.value
         }
         try {
         
@@ -105,15 +107,28 @@ function CommentSection ({id}) {
         }
     }
 
-    function handleChange (e) {
-        setTextField(e.target.value)
-    }
+    function handleUsernameChange(e) {
+        setInputField(e.target.value);
+      }
+    
+      function handleCommentChange(e) {
+        setTextField(e.target.value);
+      }
 
     return (
         <CommentSectionContainer>
             <CommentForm onSubmit={handleSubmit} >
                 <CommentLabel htmlFor="Comments">Add a Comment:</CommentLabel>
-                <CommentTextField name="comment" value={textField} onChange={handleChange} />
+                <AuthorInput
+                placeholder="add your username"
+                value={inputField}
+                name="author"
+                onChange={handleUsernameChange}
+                />
+                <CommentTextField 
+                placeholder="Bulbasaur is way better than the other starter Pokemon..."
+                 name="comment" 
+                 value={textField} onChange={handleCommentChange} />
                 <CommentSubmitButton type="submit">Submit Comment</CommentSubmitButton>
             </CommentForm>
             <Comments handleDelete={handleDelete} comments={comments?.commentsList}/>
