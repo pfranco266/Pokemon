@@ -59,4 +59,26 @@ display: flex;
 }
 `
 
+export const SearchWrapper = styled.div`
+  display: flex;
+  position: relative;
 
+`
+
+export const SearchDropDown = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  top: 100%;
+  background-color: white;
+  z-index: 10;
+  `
+export const SearchDropDownItem = styled.p`
+  z-index: 999;
+  color: #242424;
+  &:hover{
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+`

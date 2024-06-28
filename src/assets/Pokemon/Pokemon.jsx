@@ -4,7 +4,7 @@ import PokemonCard from "./PokemonCard"
 import CartContext from "../../CartContext";
 import { fetchPokeList } from "../Reducers/pokeAPI"
 import { initialPokeList, pokeListReducer } from "../Reducers/pokemonListReducer"
-import { SearchButton } from "../Search/Search.styled";
+import { SearchButton } from "../Collection/Search/Search.styled";
 // import { v4 as uuid } from 'uuid';
 
 
